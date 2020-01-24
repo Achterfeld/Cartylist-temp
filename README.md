@@ -13,5 +13,5 @@ Gerer et partager de multiples paniers.
 
 ## Liens utiles
 
-- Slack - cartylist.slack.com
+- Slack - https://cartylist.slack.com
 - Trello - https://trello.com/b/Mk3aUwHA/cartylist
