@@ -12,5 +12,5 @@
 
 ## Raccourcis
 
-+ Maquettes (Mock-ups) - https://github.com/cegepmatane/cartylist/docs/mock-ups
++ Maquettes - https://github.com/cegepmatane/cartylist/docs/maquettes
 + Navigation - https://github.com/cegepmatane/cartylist/docs/navigation
