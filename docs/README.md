@@ -12,5 +12,5 @@
 
 ## Raccourcis
 
-+ Maquettes - https://github.com/cegepmatane/cartylist/docs/maquettes
-+ Navigation - https://github.com/cegepmatane/cartylist/docs/navigation
++ Maquettes - https://github.com/cegepmatane/cartylist/tree/master/docs/maquettes
++ Navigation - https://github.com/cegepmatane/cartylist/tree/master/docs/navigation
