@@ -1,0 +1,15 @@
+label {
+	text-align: right;
+}
+
+.conteneur {
+	text-align: left;
+	width: 50%;
+	margin: 20vh auto auto auto;
+}
+
+.inscription {
+	text-align: center;
+	width: fit-content;
+	margin: auto;
+}
