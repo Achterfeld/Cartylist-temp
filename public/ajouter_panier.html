@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cartylist</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/ajouter_panier.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/ColinEspinas/lilcss/css/grid.min.css'>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/ColinEspinas/lilcss/css/utility.min.css'>
+</head>
+
+<body>
+    <nav class="nav-principale">
+        <ul class="menu-principal">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Contact</a></li>
+            <li class="marque"><a href="">Cartylist</a></li>
+            <li><a href="#">Connexion</a></li>
+            <li class="special"><a href="#">Inscription</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="conteneur-centre-page">
+            <div class="conteneur panier-editer">
+                <form>
+                    <div class="lil-row ">
+                        <h1>Ajouter un panier:</h1>
+                        <div class="lil-col 12-12">
+                            <input class="champ-texte width-100 block" type="text" placeholder="Nom du panier" value="">
+                        </div>
+                    </div>
+
+                    <!-- Ajoue d'un produit -->
+                    <div id="conteneur-produits">
+                        <div id="0" class="panier-conteneur">
+                            <h3>Ajouter un produit:</h3>
+                            <div class="lil-row lil-col between margin-tb-10">
+                                <input class="champ-texte lil-col 8-12" type="text" placeholder="Nom du produit"
+                                    value="">
+                                <input class="champ-texte lil-col 4-12" type="text" placeholder="Prix" value="">
+                            </div>
+                            <input class="champ-texte width-100 margin-tb-10" type="text"
+                                placeholder="addresse du produit" value="">
+                            <textarea class="champ-texte width-100 margin-tb-10"
+                                placeholder="Si vous avez des notes"></textarea>
+                        </div>
+                    </div>
+                    <div class="">
+                        <button id="ajouterProduit" class="bouton margin-tb-5">Ajouter un produit</button>
+                    </div>
+
+                    <!-- Fin de l'ajoue d'un produit -->
+                    <button  type="submit" class="bouton sauvegarder-btn">Sauvegarder</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <div class="conteneur-pleine-page">
+            <div class="conteneur-centre-page">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam fugit possimus quos nemo
+                    dignissimos
+                    distinctio aspernatur, temporibus voluptatibus minus sunt error qui ipsam rem voluptatem quo ratione
+                    veritatis porro quae?</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="./js/pannier.js"></script>
+
+</html>
