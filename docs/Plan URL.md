@@ -1,17 +1,17 @@
 # PLan URL
-/
+https:://cartylist.com/
 
-/connexion
+https:://cartylist.com/connexion
 
-/inscription
+https:://cartylist.com/inscription
 
-/tableau-bord
+https:://cartylist.com/tableau-bord
 
-/tableau-bord/panier?id
+https:://cartylist.com/tableau-bord/panier?id
 
-/tableau-bord/panier?id/editer
+https:://cartylist.com/tableau-bord/panier?id/editer
 
-/tableau-bord/creer-panier
+https:://cartylist.com/tableau-bord/creer-panier
 
-/parametres
+https:://cartylist.com/parametres
 
