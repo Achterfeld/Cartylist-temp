@@ -253,6 +253,29 @@ header {
 	margin: 15px 0 25px 0;
 }
 
+.panier-liste {
+	padding: 200px 0;
+}
+
+.panier {
+	display: flex;
+	align-items: center;
+	margin: 15px 0;
+}
+
+.panier>.actions {
+	margin-left: auto;
+	display: flex;
+}
+
+.panier>.actions>a {
+	margin: 0 5px;
+}
+
+.panier>h3 {
+	margin: 0;
+}
+
 /* footer {
 	border-top: 5px solid var(--secondaire-claire);
 } */
