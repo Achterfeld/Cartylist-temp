@@ -30,3 +30,21 @@ INSERT INTO `article` ( `id`, `panier`,`nom`, `prix`) VALUES
 (	2,	1, 'steak haché pur bœuf 15% MG', 7.55),
 (	3,	3, 'tee shirt blanc en coton', 14.99),
 (	4,	2, 'intel core i5', 299.99);
+
+
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE `utilisateur` (
+  `utilisateur_id` int(11) NOT NULL AUTO_INCREMENT,
+  `prenom` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `mail` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `hash` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `img` text,
+
+  PRIMARY KEY (`utilisateur_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `utilisateur` (`prenom`, `mail`) VALUES
+('colin','colin@gmail.com'),
+('salome','salome@gmail.com'),
+('mateo','mateo@gmail.com'),
+('antonin','antonin@gmail.com');
