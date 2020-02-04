@@ -21,8 +21,8 @@ try {
 					<div class="conteneur panier">
 						<h3><?= $panier["nom"] ?></h3>
 						<div class="actions">
-							<a class="bouton" href="/panier.php/?id=<?= $panier["id"] ?>">Voir</a>
-							<a class="bouton" href="/modifier_panier.php/?id=<?= $panier["id"] ?>">Modifier</a>
+							<a class="bouton" href="./panier.php?id=<?= $panier["id"] ?>">Voir</a>
+							<a class="bouton" href="./modifier_panier.php?id=<?= $panier["id"] ?>">Modifier</a>
 						</div>
 					</div>
 				<?php } ?>
