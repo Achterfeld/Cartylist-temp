@@ -1,5 +1,5 @@
 <?php
-require '../config.php';
+require_once './../../config.php';
 
 // echo json_encode($_GET, JSON_PRETTY_PRINT);
 $produits = [];

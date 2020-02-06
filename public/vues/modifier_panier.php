@@ -21,7 +21,7 @@ try {
     <main>
         <div class="conteneur-centre-page">
             <div class="conteneur panier-editer">
-                <form method="POST" action="./traitement_modifier_panier.php">
+                <form method="POST" action="<?= $PATH ?>/traitement_modifier_panier.php">
                     <div class="lil-row ">
                         <h1>Modifier un panier:</h1>
                         <div class="lil-col 12-12">
