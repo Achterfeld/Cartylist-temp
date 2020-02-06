@@ -276,6 +276,11 @@ header {
 	margin: 0;
 }
 
+.panier-affichage {
+	margin: 200px 0;
+	min-height: 300px;
+}
+
 /* footer {
 	border-top: 5px solid var(--secondaire-claire);
 } */

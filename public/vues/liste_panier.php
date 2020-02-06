@@ -1,6 +1,6 @@
-<?php
-require '../config.php';
+<?php require_once './../../config.php' ?>
 
+<?php
 try {
 	$bdd = new PDO($DSN, $USAGER, $MDP);
 	$sqlPaniers = "SELECT panier.id, panier.nom FROM panier";
@@ -12,7 +12,7 @@ try {
 }
 ?>
 
-<?php include "./header.php" ?>
+<?php include "./includes/header.php" ?>
 	<main>
 		<div class="conteneur-centre-page panier-liste">
 			<div id="panier-conteneur">
@@ -21,7 +21,7 @@ try {
 					<div class="conteneur panier">
 						<h3><?= $panier["nom"] ?></h3>
 						<div class="actions">
-							<a class="bouton" href="./panier.php?id=<?= $panier["id"] ?>">Voir</a>
+							<a class="bouton" href="./details_panier.php?id=<?= $panier["id"] ?>">Voir</a>
 							<a class="bouton" href="./modifier_panier.php?id=<?= $panier["id"] ?>">Modifier</a>
 						</div>
 					</div>
@@ -29,4 +29,4 @@ try {
 			</div>
 		</div>
 	</main>
-<?php include "./footer.php" ?>
+<?php include "./includes/footer.php" ?>

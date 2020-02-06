@@ -1,8 +1,10 @@
-<?php include "./header.php" ?>
+<?php require_once './../../config.php' ?>
+
+<?php include "./includes/header.php" ?>
     <main>
         <div class="conteneur-centre-page">
             <div class="conteneur panier-editer">
-                <form method="POST" action="./traitement_ajouter_panier.php">
+                <form method="POST" action="../traitements/traitement_ajouter_panier.php">
                     <div class="lil-row ">
                         <h1>Ajouter un panier:</h1>
                         <div class="lil-col 12-12">
@@ -34,5 +36,5 @@
         </div>
 
     </main>
-    <script src="./js/panier.js"></script>
-<?php include "./footer.php" ?>
+    <script src="../js/panier.js"></script>
+<?php include "./includes/footer.php" ?>

@@ -1,7 +1,11 @@
 <?php
 
+// Application :
+$PATH = "/public/";
+
+// Base de données :
 $USAGER = '';
 $MDP = '';
 $HOTE = '';
 $BASE = '';
-$DSN = 'mysql:dbname='.$base.';host=' . $hote;
+$DSN = 'mysql:dbname='.$BASE.';host=' . $HOTE;

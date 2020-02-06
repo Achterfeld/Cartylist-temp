@@ -1,6 +1,6 @@
-<?php
-require '../config.php';
+<?php require_once './../../config.php' ?>
 
+<?php
 try {
 	$bdd = new PDO($DSN, $USAGER, $MDP);
 	$sqlPanier = "SELECT panier.id, panier.nom FROM panier WHERE id=" . $_GET["id"] . ";";
@@ -17,7 +17,7 @@ try {
 }
 ?>
 
-<?php include "./header.php" ?>
+<?php include "./includes/header.php" ?>
     <main>
         <div class="conteneur-centre-page">
             <div class="conteneur panier-editer">
@@ -56,5 +56,5 @@ try {
         </div>
 
     </main>
-    <script src="./js/panier.js"></script>
-<?php include "./footer.php" ?>
+    <script src="../js/panier.js"></script>
+<?php include "./includes/footer.php" ?>

@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once './../../config.php' ?>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Cartylist</title>
-	<link rel="stylesheet" href="./css/style.css">
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/ColinEspinas/lilcss/css/grid.min.css'>
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/ColinEspinas/lilcss/css/utility.min.css'>
-</head>
-
-<body>
-	<nav class="nav-principale">
-		<ul class="menu-principal">
-			<li class="actif"><a href="#">Accueil</a></li>
-			<li><a href="#">Contact</a></li>
-			<li class="marque"><a href="">Cartylist</a></li>
-			<li><a href="#">Connexion</a></li>
-			<li class="special"><a href="#">Inscription</a></li>
-		</ul>
-	</nav>
+<?php include "./includes/header.php" ?>
 	<header>
 		<div class="lil-row between middle">
 			<div class="lil-col sm-12-12 md-6-12">
@@ -130,15 +110,4 @@
 			</div>
 		</div>
 	</main>
-	<footer>
-		<div class="conteneur-pleine-page">
-			<div class="conteneur-centre-page">
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam fugit possimus quos nemo dignissimos
-					distinctio aspernatur, temporibus voluptatibus minus sunt error qui ipsam rem voluptatem quo ratione
-					veritatis porro quae?</p>
-			</div>
-		</div>
-	</footer>
-</body>
-
-</html>
+<?php include "./includes/footer.php" ?>
