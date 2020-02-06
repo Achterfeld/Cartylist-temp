@@ -11,7 +11,7 @@ try {
 	$sqlProduits = "SELECT article.id, article.nom, article.prix, article.adresse, article.notes FROM article WHERE article.panier=" . $_GET["id"] . ";";
 	$demandeProduits = $bdd->prepare($sqlProduits);
 	$demandeProduits->execute();
-	$produits = $demandeProduits->fetchAll(PDO::FETCH_ASSOC);
+    $produits = $demandeProduits->fetchAll(PDO::FETCH_ASSOC);
 } catch(PDOException $e) {
 	echo '<br>' . $e->getMessage() . '<br>';
 }
