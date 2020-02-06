@@ -21,15 +21,18 @@ CREATE TABLE `article` (
   `panier` int(11) NOT NULL,
   `nom` text NOT NULL,
   `prix` decimal(7,2) DEFAULT NULL,
+  `adresse` varchar(255) DEFAULT NULL,
+  `notes` text DEFAULT NULL,
   
+
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `article` ( `id`, `panier`,`nom`, `prix`) VALUES
-(	1,	2, 'nvidia geforce gtx 1050', 200),
-(	2,	1, 'steak haché pur bœuf 15% MG', 7.55),
-(	3,	3, 'tee shirt blanc en coton', 14.99),
-(	4,	2, 'intel core i5', 299.99);
+INSERT INTO `article` ( `id`, `panier`,`nom`, `prix`, `adresse`, `notes`) VALUES
+(	1,	2, 'nvidia geforce gtx 1050', 200, '1 rue des roses, Lyon', 'une note'),
+(	2,	1, 'steak haché pur bœuf 15% MG', 7.55, '2 rue du ciel, Paris', 'une autre note'),
+(	3,	3, 'tee shirt blanc en coton', 14.99, '1 rue saint Rédempteur, Bordeau', 'une mauvaise note'),
+(	4,	2, 'intel core i5', 299.99, '5 rue de Paris, Nante', 'la bonne note');
 
 
 DROP TABLE IF EXISTS `utilisateur`;
