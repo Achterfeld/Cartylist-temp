@@ -12,6 +12,13 @@ try {
 }
 ?>
 
+
+﻿<?php
+	include "../accesseur/PanierDAO.php";
+	$paniers = PanierDAO::listerPaniers();
+
+?>
+
 <?php include "./includes/header.php" ?>
 	<main>
 		<div class="conteneur-centre-page panier-liste">
