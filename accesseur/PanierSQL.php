@@ -1,6 +1,6 @@
 
 <?php
-interface ContratSQL
+interface PanierSQL
 {
 	
 	public const SQL_LISTE_PANIERS = "SELECT * FROM panier";

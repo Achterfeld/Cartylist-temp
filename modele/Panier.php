@@ -5,7 +5,7 @@ class Panier
 	public static $filtres = 
 		array(
 			'id' => FILTER_VALIDATE_INT,
-			'nom' => FILTER_SANITIZE_ENCODED,
+			'nom' => FILTER_SANITIZE_STRING,
 		);
 		
 	protected $nom;
@@ -13,7 +13,7 @@ class Panier
 	
 	public function __construct($tableau)
 	{
-		$tableau = filter_var_array($tableau, Contrat::$filtres);
+		$tableau = filter_var_array($tableau, Panier::$filtres);
 
 		$this->id = $tableau['id'];
 		$this->nom = $tableau['nom'];

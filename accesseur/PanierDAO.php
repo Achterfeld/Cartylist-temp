@@ -1,7 +1,7 @@
 <?php 
 
-	include_once "modele/Panier.php";
-	include_once "accesseur/PanierSQL.php";
+	require_once "../../modele/Panier.php";
+	require_once "../../accesseur/PanierSQL.php";
 
 	class Accesseur
 	{

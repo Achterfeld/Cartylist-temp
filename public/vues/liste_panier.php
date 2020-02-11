@@ -1,20 +1,7 @@
 <?php require_once './../../config.php' ?>
 
-<?php
-try {
-	$bdd = new PDO($DSN, $USAGER, $MDP);
-	$sqlPaniers = "SELECT panier.id, panier.nom FROM panier";
-	$demandePanier = $bdd->prepare($sqlPaniers);
-	$demandePanier->execute();
-	$paniers = $demandePanier->fetchAll(PDO::FETCH_ASSOC);
-} catch(PDOException $e) {
-	echo '<br>' . $e->getMessage() . '<br>';
-}
-?>
-
-
 ﻿<?php
-	include "../accesseur/PanierDAO.php";
+	include "../../accesseur/PanierDAO.php";
 	$paniers = PanierDAO::listerPaniers();
 
 ?>
@@ -26,9 +13,9 @@ try {
 				<h2 class="titre-section">Paniers:</h2>
 				<?php foreach ($paniers as $panier) { ?>
 					<div class="conteneur panier">
-						<h3><?= $panier["nom"] ?></h3>
+						<h3><?= $panier->__get("nom") ?></h3>
 						<div class="actions">
-							<a class="bouton" href="./details_panier.php?id=<?= $panier["id"] ?>">Voir</a>
+							<a class="bouton" href="./details_panier.php?id=<?= $panier->__get("id") ?>">Voir</a>
 						</div>
 					</div>
 				<?php } ?>
