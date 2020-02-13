@@ -13,7 +13,7 @@ try {
 ?>
 
 
-﻿<?php
+<?php
 	include "../accesseur/PanierDAO.php";
 	$paniers = PanierDAO::listerPaniers();
 
