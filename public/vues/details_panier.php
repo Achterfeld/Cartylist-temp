@@ -1,6 +1,7 @@
 <?php require_once './../../config.php' ?>
 
 <?php
+<<<<<<< HEAD
 try {
 	$bdd = new PDO($DSN, $USAGER, $MDP);
 	$idPanier = filter_var($_GET['id'],FILTER_VALIDATE_INT);
@@ -16,6 +17,11 @@ try {
 } catch(PDOException $e) {
 	echo '<br>' . $e->getMessage() . '<br>';
 }
+=======
+	use Accesseurs\PanierDAO;
+	
+	$paniers = PanierDAO::detaillerPanier($_GET["id"]);
+>>>>>>> 37fabcc634777fdb6c8fed24e3dd259c2bee461c
 ?>
 
 <?php
@@ -28,7 +34,12 @@ try {
 	<main>
 		<div class="conteneur-centre-page">
 			<div class="conteneur panier-affichage">
+<<<<<<< HEAD
 				<h1><?= $panier["nom"] ?></h1>
+=======
+				<h1><?= $panier->__get("nom") ?></h1>
+				<p>Description du panier.</p>
+>>>>>>> 37fabcc634777fdb6c8fed24e3dd259c2bee461c
 				<div class="liste-articles">
 				<?php foreach($articles as $article) { ?>
 					<div class="article">
