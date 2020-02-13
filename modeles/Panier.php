@@ -1,5 +1,7 @@
 <?php
 
+namespace Modeles;
+
 class Panier
 {
 	public static $filtres = 

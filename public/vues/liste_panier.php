@@ -1,9 +1,9 @@
 <?php require_once './../../config.php' ?>
 
-﻿<?php
-	include "../../accesseur/PanierDAO.php";
+<?php
+	use Accesseurs\PanierDAO;
+	
 	$paniers = PanierDAO::listerPaniers();
-
 ?>
 
 <?php include "./includes/header.php" ?>
