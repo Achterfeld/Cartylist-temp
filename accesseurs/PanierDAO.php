@@ -3,7 +3,9 @@
 namespace Accesseurs;
 
 use Modeles\Panier;
+use Modeles\Article;
 use Accesseurs\Requetes\PanierSQL;
+use Accesseurs\Requetes\ArticleSQL;
 use Accesseurs\Connexion;
 
 class PanierDAO implements PanierSQL
@@ -26,12 +28,17 @@ class PanierDAO implements PanierSQL
 		$panier = $demandePanier->fetch(\PDO::FETCH_ASSOC);
 		return new Panier($panier);
 	}
+
+	public static function listeArticle($id) {
+		$demandeArticle = Connexion::instance()->basededonnees->prepare(PanierDAO::SQL_ARTICLE_PANIER);
+		$demandeArticle->bindParam(':id', $id, \PDO::PARAM_INT);
+		$demandeArticle->execute();
+		$articles = $demandeArticle->fetchAll(\PDO::FETCH_ASSOC);
+		$articlesobj = [];
+		foreach ($articles as $article) {
+			$articlesobj[] = new Article($arcticle);
+		}	
+
+		return $articlesobj;
+	}
 }
-
-// function formater($texte)
-// {
-// 	$texte = html_entity_decode($texte,ENT_COMPAT,'UTF-8');
-// 	$texte = htmlentities($texte,ENT_COMPAT,'ISO-8859-1');
-// 	return $texte;
-
-// }

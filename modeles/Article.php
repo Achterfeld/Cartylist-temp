@@ -1,5 +1,7 @@
 <?php
 
+namespace Modeles;
+
 class Article
 {
 	public static $filtres = 
