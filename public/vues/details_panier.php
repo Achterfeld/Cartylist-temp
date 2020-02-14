@@ -15,7 +15,7 @@
 				<?php foreach($articles as $article) { ?>
 					<div class="article">
 						<a href="<?= $article["adresse"] ?>"><?= $article["nom"] ?></a><br />
-						<span class="article-prix"><?= $article["prix"] ?></span>
+						<span class="article-prix"><?= $article["prix"] ?></span><br />
 						<span class="article-notes"><?= $article["notes"] ?></span>
 					</div>
 				<?php } ?>
