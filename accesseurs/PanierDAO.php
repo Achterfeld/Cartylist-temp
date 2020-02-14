@@ -8,7 +8,7 @@ use Accesseurs\Requetes\PanierSQL;
 use Accesseurs\Requetes\ArticleSQL;
 use Accesseurs\Connexion;
 
-class PanierDAO implements PanierSQL
+class PanierDAO
 {
 
 	public static function listerPaniers()
@@ -29,11 +29,11 @@ class PanierDAO implements PanierSQL
 		return new Panier($panier);
 	}
 
-	public static function listeArticle($id) {
-		$demandeArticle = Connexion::instance()->basededonnees->prepare(PanierDAO::SQL_ARTICLE_PANIER);
-		$demandeArticle->bindParam(':id', $id, \PDO::PARAM_INT);
-		$demandeArticle->execute();
-		$articles = $demandeArticle->fetchAll(\PDO::FETCH_ASSOC);
+	public static function listerArticles($id) {
+		$demandeArticles = Connexion::instance()->basededonnees->prepare(PanierDAO::SQL_ARTICLE_PANIER);
+		$demandeArticles->bindParam(':id', $id, \PDO::PARAM_INT);
+		$demandeArticles->execute();
+		$articles = $demandeArticles->fetchAll(\PDO::FETCH_ASSOC);
 		$articlesobj = [];
 		foreach ($articles as $article) {
 			$articlesobj[] = new Article($arcticle);
