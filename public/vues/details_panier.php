@@ -1,9 +1,8 @@
 <?php require_once './../../config.php' ?>
 
 <?php
-	use Accesseurs\PanierDAO;
-	
-	$paniers = PanierDAO::detaillerPanier($_GET["id"]);
+	$panierControleur = new Controleurs\PanierControleur();
+	$panier = $panierControleur->detailler();
 ?>
 
 <?php include "./includes/header.php" ?>
@@ -24,4 +23,4 @@
 			</div>
 		</div>
 	</main>
-<?php include "./includes/footer.php" ?> 
+<?php include "./includes/footer.php" ?>

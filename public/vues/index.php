@@ -13,7 +13,7 @@
 				</div>
 			</div>
 			<div class="lil-col sm-12-12 md-6-12">
-				<img id="image-entete" src="<?= $PATH ?>/images/undraw_empty_cart_co35.svg" alt="">
+				<img id="image-entete" src="<?= _PUBLIC ?>/images/undraw_empty_cart_co35.svg" alt="">
 			</div>
 		</div>
 	</header>

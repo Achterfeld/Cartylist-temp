@@ -1,9 +1,8 @@
 <?php require_once './../../config.php' ?>
 
 <?php
-	use Accesseurs\PanierDAO;
-	
-	$paniers = PanierDAO::listerPaniers();
+	$panierControleur = new Controleurs\PanierControleur();
+	$paniers = $panierControleur->lister();
 ?>
 
 <?php include "./includes/header.php" ?>
