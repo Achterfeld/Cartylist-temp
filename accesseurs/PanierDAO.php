@@ -13,7 +13,7 @@ class PanierDAO
 
 	public static function listerPaniers()
 	{
-		$demandePaniers = Connexion::instance()->basededonnees->prepare(PanierDAO::SQL_LISTE_PANIERS);
+		$demandePaniers = Connexion::instance()->basededonnees->prepare(PanierSQL::SQL_LISTE_PANIERS);
 		$demandePaniers->execute();
 		$paniersTableau = $demandePaniers->fetchAll(\PDO::FETCH_ASSOC);
 		foreach($paniersTableau as $panierTableau) $paniers[] = new Panier($panierTableau);
@@ -22,7 +22,7 @@ class PanierDAO
 	
 	public static function detaillerPanier($id)
 	{
-		$demandePanier = Connexion::instance()->basededonnees->prepare(PanierDAO::SQL_DETAIL_PANIER);
+		$demandePanier = Connexion::instance()->basededonnees->prepare(PanierSQL::SQL_DETAIL_PANIER);
 		$demandePanier->bindParam(':id', $id, \PDO::PARAM_INT);
 		$demandePanier->execute();
 		$panier = $demandePanier->fetch(\PDO::FETCH_ASSOC);
@@ -30,7 +30,7 @@ class PanierDAO
 	}
 
 	public static function listerArticles($id) {
-		$demandeArticles = Connexion::instance()->basededonnees->prepare(PanierDAO::SQL_ARTICLE_PANIER);
+		$demandeArticles = Connexion::instance()->basededonnees->prepare(PanierSQL::SQL_ARTICLE_PANIER);
 		$demandeArticles->bindParam(':id', $id, \PDO::PARAM_INT);
 		$demandeArticles->execute();
 		$articles = $demandeArticles->fetchAll(\PDO::FETCH_ASSOC);
