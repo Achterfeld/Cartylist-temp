@@ -5,5 +5,15 @@ label {
 .conteneur {
 	text-align: left;
 	width: 50%;
-	margin: 20vh auto auto auto;
+	margin: 15vh auto auto auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+#paiement-infos {
+	background-color: #e4e4e4;
+	padding: 15px;
+	border-radius: 10px;
 }
