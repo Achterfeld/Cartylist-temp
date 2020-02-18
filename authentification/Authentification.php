@@ -1,6 +1,6 @@
 <?php
 
-require_once './../../config.php';
+require_once './../config.php';
 
 class Authentification
 {
@@ -26,11 +26,11 @@ class Authentification
 	public static function nouveauUtilisateur($prenom, $password, $password2, $mail)
 	{
 
-		$USAGER = 'cartylist';
-		$MDP = 'Matane';
-		$HOTE = '51.161.8.152';
-		$BASE = 'cartylist';
-		$DSN = 'mysql:dbname='.$BASE.';host=' . $HOTE;
+		$USAGER = _BDD_USAGER;
+		$MDP = _BDD_MOTDEPASSE;
+		$HOTE = _BDD_HOTE;
+		$BASE = _BDD_BASE;
+		$DSN = _BDD_DSN;
 
 		$prenom = filter_var($prenom, FILTER_SANITIZE_SPECIAL_CHARS);
 		$password = filter_var($password, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -90,11 +90,12 @@ class Authentification
 	 */
 	public static function chargerProfile($mail)
 	{
-		$USAGER = 'cartylist';
-		$MDP = 'Matane';
-		$HOTE = '51.161.8.152';
-		$BASE = 'cartylist';
-		$DSN = 'mysql:dbname='.$BASE.';host=' . $HOTE;
+
+		$USAGER = _BDD_USAGER;
+		$MDP = _BDD_MOTDEPASSE;
+		$HOTE = _BDD_HOTE;
+		$BASE = _BDD_BASE;
+		$DSN = _BDD_DSN;
 
 		error_reporting(E_ALL);
 		ini_set('display_errors', 1);
@@ -138,12 +139,12 @@ class Authentification
 	public static function authentifier($mail, $password)
 	{
 
-		$USAGER = 'cartylist';
-		$MDP = 'Matane';
-		$HOTE = '51.161.8.152';
-		$BASE = 'cartylist';
-		$DSN = 'mysql:dbname='.$BASE.';host=' . $HOTE;
-
+		$USAGER = _BDD_USAGER;
+		$MDP = _BDD_MOTDEPASSE;
+		$HOTE = _BDD_HOTE;
+		$BASE = _BDD_BASE;
+		$DSN = _BDD_DSN;
+		
 		$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
 		$password = filter_var($password, FILTER_SANITIZE_SPECIAL_CHARS);
 
