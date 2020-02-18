@@ -1,6 +1,6 @@
 <?php
 
-require_once './../config.php';
+namespace Services;
 
 class Authentification
 {
@@ -42,7 +42,7 @@ class Authentification
 
 		try {
 
-			$basededonnees = new PDO($DSN, $USAGER, $MDP);
+			$basededonnees = new \PDO($DSN, $USAGER, $MDP);
 			$SQL_SELECT_MAIL = "SELECT count(*) FROM utilisateur WHERE mail = :mail";
 			$demandeMail = $basededonnees->prepare($SQL_SELECT_MAIL);
 			$demandeMail->bindParam(':mail', $mail);
@@ -50,7 +50,7 @@ class Authentification
 
 			$resultat = $demandeMail->fetchAll();
 
-		} catch(PDOException $e) {
+		} catch(\PDOException $e) {
 
 			echo '<br>' . $e->getMessage() . '<br>';
 		}
@@ -68,7 +68,7 @@ class Authentification
 					$demandeUtilisateur->bindParam(':mail', $mail);
 					$demandeUtilisateur->bindParam(':hash', $hash1);
 					$demandeUtilisateur->execute();
-				} catch(PDOException $e) {
+				} catch(\PDOException $e) {
 
 					echo '<br>' . $e->getMessage() . '<br>';
 				}
@@ -102,7 +102,7 @@ class Authentification
 
 		try {
 
-			$basededonnees = new PDO($DSN, $USAGER, $MDP);
+			$basededonnees = new \PDO($DSN, $USAGER, $MDP);
 			$SQL_SELECT_UTILISATEUR = "SELECT utilisateur_id, prenom, mail  FROM utilisateur WHERE mail = :mail";
 			$demandeMail = $basededonnees->prepare($SQL_SELECT_UTILISATEUR);
 			$demandeMail->bindParam(':mail', $mail);
@@ -110,7 +110,7 @@ class Authentification
 
 			$resultat = $demandeMail->fetchAll();
 
-		} catch(PDOException $e) {
+		} catch(\PDOException $e) {
 
 			echo '<br>' . $e->getMessage() . '<br>';
 		}
@@ -150,7 +150,7 @@ class Authentification
 
 		try {
 
-			$basededonnees = new PDO($DSN, $USAGER, $MDP);
+			$basededonnees = new \PDO($DSN, $USAGER, $MDP);
 			$SQL_SELECT_UTILISATEUR = "SELECT utilisateur_id, prenom, mail, hash  FROM utilisateur WHERE mail = :mail";
 			$demandeMail = $basededonnees->prepare($SQL_SELECT_UTILISATEUR);
 			$demandeMail->bindParam(':mail', $mail);
@@ -158,7 +158,7 @@ class Authentification
 
 			$resultat = $demandeMail->fetchAll();
 
-		} catch(PDOException $e) {
+		} catch(\PDOException $e) {
 
 			echo '<br>' . $e->getMessage() . '<br>';
 		}
