@@ -27,7 +27,7 @@ class Utilisateur
         $this->id = $tableau['id'];
         $this->prenom = $tableau['prenom'];
         $this->mail = $tableau['mail'];
-        $this->hash = $tableau['hash']
+        $this->hash = $tableau['hash'];
         $this->img = $tableau['img'];
         
 	}

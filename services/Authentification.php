@@ -104,26 +104,26 @@ class Authentification
 
 			$basededonnees = new \PDO($DSN, $USAGER, $MDP);
 			$SQL_SELECT_UTILISATEUR = "SELECT utilisateur_id, prenom, mail  FROM utilisateur WHERE mail = :mail";
-			$demandeMail = $basededonnees->prepare($SQL_SELECT_UTILISATEUR);
-			$demandeMail->bindParam(':mail', $mail);
-			$demandeMail->execute();
+			$demandemail = $basededonnees->prepare($SQL_SELECT_UTILISATEUR);
+			$demandemail->bindParam(':mail', $mail);
+			$demandemail->execute();
 
-			$resultat = $demandeMail->fetchAll();
+			$resultat = $demandemail->fetchAll();
 
 		} catch(\PDOException $e) {
 
 			echo '<br>' . $e->getMessage() . '<br>';
 		}
 
-		if (isset($_SESSION['session']))
-			unset($_SESSION['session']);
+		if (isset($_SESSION['utilisateur']))
+			unset($_SESSION['utilisateur']);
 
 
 		if (!is_null($resultat[0][0])) {
 
-			$_SESSION['session']['eMail'] = $resultat[0]['mail'];
-			$_SESSION['session']['prenom'] = $resultat[0]['prenom'];
-			$_SESSION['session']['utilisateur_id'] = $resultat[0]['utilisateur_id'];
+			$_SESSION['utilisateur']['email'] = $resultat[0]['mail'];
+			$_SESSION['utilisateur']['prenom'] = $resultat[0]['prenom'];
+			$_SESSION['utilisateur']['id'] = $resultat[0]['utilisateur_id'];
 		}
 
 		setcookie("mail", $resultat[0]['mail'], time() + 60 * 60 * 24 * 2, "/");
@@ -152,11 +152,11 @@ class Authentification
 
 			$basededonnees = new \PDO($DSN, $USAGER, $MDP);
 			$SQL_SELECT_UTILISATEUR = "SELECT utilisateur_id, prenom, mail, hash  FROM utilisateur WHERE mail = :mail";
-			$demandeMail = $basededonnees->prepare($SQL_SELECT_UTILISATEUR);
-			$demandeMail->bindParam(':mail', $mail);
-			$demandeMail->execute();
+			$demandemail = $basededonnees->prepare($SQL_SELECT_UTILISATEUR);
+			$demandemail->bindParam(':mail', $mail);
+			$demandemail->execute();
 
-			$resultat = $demandeMail->fetchAll();
+			$resultat = $demandemail->fetchAll();
 
 		} catch(\PDOException $e) {
 
@@ -181,8 +181,8 @@ class Authentification
 	 */
 	public static function disconnect()
 	{
-		if (isset($_SESSION['session'])) {
-			unset($_SESSION['session']);
+		if (isset($_SESSION['utilisateur'])) {
+			unset($_SESSION['utilisateur']);
 		}
 	}
 }

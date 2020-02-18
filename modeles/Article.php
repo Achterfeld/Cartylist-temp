@@ -8,7 +8,7 @@ class Article
 		array(
             'id' => FILTER_VALIDATE_INT,
             'panier' => FILTER_VALIDATE_INT,
-            'nom' => FILTER_SANITIZE_ENCODED,
+            'nom' => FILTER_SANITIZE_STRING,
             'prix' => FILTER_VALIDATE_FLOAT,
             'adresse' => FILTER_SANITIZE_URL,
             'notes' => FILTER_SANITIZE_STRING,
@@ -37,9 +37,6 @@ class Article
 	{
 		switch($propriete)
 		{
-			case 'id':
-				$this->id = $valeur;
-			break;
 			case 'nom':
 				$this->titre = $valeur;
 			break;

@@ -1,57 +1,41 @@
 <?php 
 
-	include_once "modele/Article.php";
-	include_once "accesseur/ArticleSQL.php";
+namespace Accesseurs;
 
-	class Accesseur
-	{
-		public static $basededonnees = null;
+use Modeles\Panier;
+use Modeles\Article;
+use Accesseurs\Requetes\ArticleSQL;
+use Accesseurs\Connexion;
 
-		public static function initialiser()
-		{
-			$usager = 'mateo';
-			$motdepasse = 'Matane';
-			$hote = '51.161.8.152';
-			$base = 'cartylist';
-			$dsn = 'mysql:dbname='.$base.';host=' . $hote;
-			PanierDAO::$basededonnees = new PDO($dsn, $usager, $motdepasse);
-			PanierDAO::$basededonnees->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		}
-	}
-	
-	class PanierDAO extends Accesseur implements PanierSQL
-	{				
-		public static function listerPaniers()
-		{
-			
-			PanierDAO::initialiser();
-
-			$demandePaniers = PanierDAO::$basededonnees->prepare(PanierDAO::SQL_LISTE_PANIERS);
-			$demandePaniers->execute();
-			$paniersTableau = $demandePaniers->fetchAll(PDO::FETCH_ASSOC);
-			foreach($paniersTableau as $panierTableau) $paniers[] = new Panier($panierTableau);
-			return $paniers;
-		}
-		
-		public static function detaillerContrat($id)
-		{
-			ContratDAO::initialiser();
-
-			$demandePanier = ContratDAO::$basededonnees->prepare(ContratDAO::SQL_DETAIL_PANIER);
-			$demandePanier->bindParam(':id', $id, PDO::PARAM_INT);
-			$demandeContrat->execute();
-			$panier = $demandePanier->fetch(PDO::FETCH_ASSOC);
-			return new Panier($panier);
-		}
-	
-		
-	}
-
-function formater($texte)
+class ArticleDAO
 {
-	$texte = html_entity_decode($texte,ENT_COMPAT,'UTF-8');
-	$texte = htmlentities($texte,ENT_COMPAT,'ISO-8859-1');
-	return $texte;
 
+	public static function listerArticles()
+	{
+		$demandeArticles = Connexion::instance()->basededonnees->prepare(ArticleSQL::SQL_LISTE_ARTICLES);
+		$demandeArticles->execute();
+		$articles = $demandeArticles->fetchAll(\PDO::FETCH_ASSOC);
+		$articlesObjs = [];
+		foreach($articles as $article) $articlesObjs[] = new Article($article);
+		return $articlesObjs;
+	}
+	
+	public static function detaillerArticle($id)
+	{
+		$demandeArticle = Connexion::instance()->basededonnees->prepare(ArticleSQL::SQL_DETAIL_ARTICLE);
+		$demandeArticle->bindParam(':id', $id, \PDO::PARAM_INT);
+		$demandeArticle->execute();
+		$article = $demandeArticle->fetch(\PDO::FETCH_ASSOC);
+		return new Article($article);
+	}
+
+	public static function listerArticlesPanier($idPanier) {
+		$demandeArticles = Connexion::instance()->basededonnees->prepare(ArticleSQL::SQL_LISTE_ARTICLES_PANIER);
+		$demandeArticles->bindParam(':id', $idPanier, \PDO::PARAM_INT);
+		$demandeArticles->execute();
+		$articles = $demandeArticles->fetchAll(\PDO::FETCH_ASSOC);
+		$articlesObjs = [];
+		foreach ($articles as $article) $articlesObjs[] = new Article($article);
+		return $articlesObjs;
+	}
 }
-?>

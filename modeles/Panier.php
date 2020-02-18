@@ -4,17 +4,20 @@ namespace Modeles;
 
 class Panier
 {
+	protected $id;
+	protected $nom;
+	protected $articles;
+
 	public static $filtres = 
 		array(
 			'id' => FILTER_VALIDATE_INT,
 			'nom' => FILTER_SANITIZE_STRING,
 		);
-		
-	protected $nom;
 
-	
 	public function __construct($tableau)
 	{
+		$this->articles = $tableau['articles'];
+
 		$tableau = filter_var_array($tableau, Panier::$filtres);
 
 		$this->id = $tableau['id'];
@@ -25,9 +28,6 @@ class Panier
 	{
 		switch($propriete)
 		{
-			case 'id':
-				$this->id = $valeur;
-			break;
 			case 'nom':
 				$this->titre = $valeur;
 			break;
