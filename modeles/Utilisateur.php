@@ -6,7 +6,6 @@ class Utilisateur
 {
 	public static $filtres = 
 		array(
-            'id' => FILTER_VALIDATE_INT,
             'prenom' => FILTER_SANITIZE_STRING,
             'mail' => FILTER_SANITIZE_STRING,
             'hash' => FILTER_SANITIZE_STRING,
@@ -24,7 +23,6 @@ class Utilisateur
 	{
 		$tableau = filter_var_array($tableau, Utilisateur::$filtres);
 
-        $this->id = $tableau['id'];
         $this->prenom = $tableau['prenom'];
         $this->mail = $tableau['mail'];
         $this->hash = $tableau['hash'];

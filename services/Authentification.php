@@ -25,53 +25,20 @@ class Authentification
 
 	public static function nouveauUtilisateur($prenom, $password, $password2, $mail)
 	{
-
-		$USAGER = _BDD_USAGER;
-		$MDP = _BDD_MOTDEPASSE;
-		$HOTE = _BDD_HOTE;
-		$BASE = _BDD_BASE;
-		$DSN = _BDD_DSN;
-
 		$prenom = filter_var($prenom, FILTER_SANITIZE_SPECIAL_CHARS);
 		$password = filter_var($password, FILTER_SANITIZE_SPECIAL_CHARS);
 		$password2 = filter_var($password2, FILTER_SANITIZE_SPECIAL_CHARS);
 		$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
 
-		error_reporting(E_ALL);
-		ini_set('display_errors', 1);
+		$utilisateur = new Utilisateur([$prenom, $mail]);
 
-		try {
-
-			$basededonnees = new \PDO($DSN, $USAGER, $MDP);
-			$SQL_SELECT_MAIL = "SELECT count(*) FROM utilisateur WHERE mail = :mail";
-			$demandeMail = $basededonnees->prepare($SQL_SELECT_MAIL);
-			$demandeMail->bindParam(':mail', $mail);
-			$demandeMail->execute();
-
-			$resultat = $demandeMail->fetchAll();
-
-		} catch(\PDOException $e) {
-
-			echo '<br>' . $e->getMessage() . '<br>';
-		}
- 
-
-		if ($resultat[0][0] == 0) {
+		if (!estInscrit($utilisateur)) {
 
 			$hash1 = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
 
 			if (password_verify($password2, $hash1)) {
-				try {
-					$SQL_INSERT_UTILISATEUR = "INSERT INTO utilisateur (prenom, mail, hash) VALUES (:prenom, :mail, :hash);";
-					$demandeUtilisateur = $basededonnees->prepare($SQL_INSERT_UTILISATEUR);
-					$demandeUtilisateur->bindParam(':prenom', $prenom);
-					$demandeUtilisateur->bindParam(':mail', $mail);
-					$demandeUtilisateur->bindParam(':hash', $hash1);
-					$demandeUtilisateur->execute();
-				} catch(\PDOException $e) {
 
-					echo '<br>' . $e->getMessage() . '<br>';
-				}
+				$utilisateur->__set('hash', $hash1);
 				return self::Insertion_OK;
 			} else {
 				return self::Pb_MDP;
@@ -91,39 +58,17 @@ class Authentification
 	public static function chargerProfile($mail)
 	{
 
-		$USAGER = _BDD_USAGER;
-		$MDP = _BDD_MOTDEPASSE;
-		$HOTE = _BDD_HOTE;
-		$BASE = _BDD_BASE;
-		$DSN = _BDD_DSN;
+		$utilisateur = UtilisateurDAO::obtenirUtilisateur($mail);
 
-		error_reporting(E_ALL);
-		ini_set('display_errors', 1);
-
-		try {
-
-			$basededonnees = new \PDO($DSN, $USAGER, $MDP);
-			$SQL_SELECT_UTILISATEUR = "SELECT utilisateur_id, prenom, mail  FROM utilisateur WHERE mail = :mail";
-			$demandemail = $basededonnees->prepare($SQL_SELECT_UTILISATEUR);
-			$demandemail->bindParam(':mail', $mail);
-			$demandemail->execute();
-
-			$resultat = $demandemail->fetchAll();
-
-		} catch(\PDOException $e) {
-
-			echo '<br>' . $e->getMessage() . '<br>';
+		if (isset($_SESSION['utilisateur'])) {
+			unset($_SESSION['utilisateur']);
 		}
 
-		if (isset($_SESSION['utilisateur']))
-			unset($_SESSION['utilisateur']);
+		if (!is_null($utilisateur)) {
 
-
-		if (!is_null($resultat[0][0])) {
-
-			$_SESSION['utilisateur']['email'] = $resultat[0]['mail'];
-			$_SESSION['utilisateur']['prenom'] = $resultat[0]['prenom'];
-			$_SESSION['utilisateur']['id'] = $resultat[0]['utilisateur_id'];
+			$_SESSION['utilisateur']['mail'] = $utilisateur->mail;
+			$_SESSION['utilisateur']['prenom'] = $utilisateur->prenom;
+			$_SESSION['utilisateur']['id'] = $utilisateur->id;
 		}
 
 		setcookie("mail", $resultat[0]['mail'], time() + 60 * 60 * 24 * 2, "/");
@@ -138,39 +83,19 @@ class Authentification
 	 */
 	public static function authentifier($mail, $password)
 	{
+		try {	
+			$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
+			$password = filter_var($password, FILTER_SANITIZE_SPECIAL_CHARS);
 
-		$USAGER = _BDD_USAGER;
-		$MDP = _BDD_MOTDEPASSE;
-		$HOTE = _BDD_HOTE;
-		$BASE = _BDD_BASE;
-		$DSN = _BDD_DSN;
-		
-		$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
-		$password = filter_var($password, FILTER_SANITIZE_SPECIAL_CHARS);
+			$utilisateur = UtilisateurDAO::obtenirUtilisateur($mail);
 
-		try {
-
-			$basededonnees = new \PDO($DSN, $USAGER, $MDP);
-			$SQL_SELECT_UTILISATEUR = "SELECT utilisateur_id, prenom, mail, hash  FROM utilisateur WHERE mail = :mail";
-			$demandemail = $basededonnees->prepare($SQL_SELECT_UTILISATEUR);
-			$demandemail->bindParam(':mail', $mail);
-			$demandemail->execute();
-
-			$resultat = $demandemail->fetchAll();
-
-		} catch(\PDOException $e) {
-
-			echo '<br>' . $e->getMessage() . '<br>';
-		}
-
-		if (!is_null($resultat[0][0])) {
-
-			if (password_verify($password, $resultat[0]['hash'])) {
-				Authentification::chargerProfile($resultat[0]['mail']);
-				return 0;
+			if(password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]) == $utilisateur->hash) {
+				return true;
 			} else {
-				echo "Le mot de passe n'est pas bon";
+				return false;
 			}
+		} catch(PDOException $e) {
+			return false;
 		}
 	}
 
