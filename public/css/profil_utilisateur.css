@@ -1,0 +1,16 @@
+.profil h1{
+    text-align: center;
+}
+
+.profil-image {
+    display: inline-block;
+    height: 250px;
+    width: 250px;
+    background-image: url('./../images/profile.svg');
+}
+
+.profil-infos {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 1vw;
+}
