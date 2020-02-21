@@ -1,6 +1,6 @@
-<?php require_once './../../../config.php' ?>
+<?php require_once './../../config.php' ?>
 
-<?php include "./../includes/header.php" ?>
+<?php include "./includes/header.php" ?>
 
 <button id="checkout-button">Pay</button>
 
@@ -18,7 +18,7 @@ checkoutButton.addEventListener('click', function () {
       quantity: 1
     }],
     successUrl: 'http://localhost:3000/public/vues/index.php',
-    cancelUrl: 'http://localhost:3000/public/vues/payement/payement.php'
+    cancelUrl: 'http://localhost:3000/public/vues/payement.php'
   }).then(function (result) {
   // If `redirectToCheckout` fails due to a browser or network
   // error, display the localized error message to your customer
@@ -26,6 +26,6 @@ checkoutButton.addEventListener('click', function () {
 });
 });
 </script>
-<?php include "./../includes/footer.php" ?>
+<?php include "./includes/footer.php" ?>
 
 
