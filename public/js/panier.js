@@ -13,6 +13,7 @@ document.querySelector("#ajouterProduit").addEventListener('click', function (e)
         </div>
         <input class="champ-texte width-100 margin-tb-10" type="text" placeholder="Adresse du produit"  name="adresse_produit_${index}">
         <textarea class="champ-texte width-100 margin-tb-10" placeholder="Si vous avez des notes" name="notes_produit_${index}"></textarea>
+        <input name="action_produit_${index}" type="hidden" value="ajouter">
     `;
     document.querySelector('#conteneur-produits').appendChild(conteneur);
     document.querySelector("#nb-produits").value = index + 1;

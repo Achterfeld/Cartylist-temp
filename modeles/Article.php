@@ -14,10 +14,12 @@ class Article
             'notes' => FILTER_SANITIZE_STRING,
 		);
 		
+	protected $id;
     protected $nom;
     protected $prix;
     protected $adresse;
-    protected $notes;
+	protected $notes;
+	protected $panier;
 
 	
 	public function __construct($tableau)
@@ -30,7 +32,6 @@ class Article
         $this->prix = $tableau['prix'];
         $this->adresse = $tableau['adresse'];
         $this->notes = $tableau['notes'];
-        
 	}
 	
 	public function __set($propriete, $valeur)
@@ -40,10 +41,26 @@ class Article
 			case 'nom':
 				$this->titre = $valeur;
 			break;
+
+			case 'panier':
+				$this->panier = $valeur;
+			break;
+
+			case 'prix':
+				$this->prix = $valeur;
+			break;
+
+			case 'adresse':
+				$this->adresse = $valeur;
+			break;
+
+			case 'notes':
+				$this->notes = $valeur;
+			break;
 		}
 	}
 
-	public function __get($propriete)
+	public function &__get($propriete)
 	{
 		$self = get_object_vars($this); // externaliser pour optimiser
 		return $self[$propriete];

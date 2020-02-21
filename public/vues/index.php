@@ -1,5 +1,9 @@
 <?php require_once './../../config.php' ?>
 
+<?php 
+	Utilitaires\Page::titre("accueil"); 
+?>
+
 <?php include "./includes/header.php" ?>
 	<header>
 		<div class="lil-row between middle">

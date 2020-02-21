@@ -1,9 +1,11 @@
 <?php require_once './../../config.php' ?>
 
 <?php
-	$panierControleur = new Controleurs\PanierControleur();
-	$paniers = $panierControleur->lister();
+	Utilitaires\Page::titre("liste-paniers");
+	$paniers = Controleurs\PanierControleur::lister();
 ?>
+
+<?php include_once _RACINE . "/utilitaires/routes.php" ?>
 
 <?php include "./includes/header.php" ?>
 	<main>

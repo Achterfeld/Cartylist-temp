@@ -4,7 +4,7 @@
     <main>
         <div class="conteneur-centre-page">
             <div class="conteneur panier-editer">
-                <form method="POST" action="<?= $PATH ?>/traitements/traitement_ajouter_panier.php">
+                <form method="POST" action="<?= _PUBLIC ?>/vues/liste_panier.php">
                     <div class="lil-row ">
                         <h1>Ajouter un panier:</h1>
                         <div class="lil-col 12-12">
@@ -25,6 +25,8 @@
                         </div>
                     </div>
                    <input id="nb-produits" type="hidden" name="nb_produits" value="1">
+
+                   <input name="action" type="hidden" value="panier-ajouter">
 
                     <!-- Fin de l'ajoue d'un produit -->
                     <button  type="submit" class="bouton sauvegarder-btn">Sauvegarder</button>

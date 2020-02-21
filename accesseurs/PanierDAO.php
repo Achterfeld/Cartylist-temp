@@ -9,6 +9,22 @@ use Accesseurs\Connexion;
 
 class PanierDAO
 {
+	public static function ajouterPanier($panier) {
+		$demandePanier = Connexion::instance()->basededonnees->prepare(PanierSQL::SQL_AJOUTER_PANIER);
+		$demandePanier->bindParam(':nom', $panier->nom, \PDO::PARAM_STR);
+		$demandePanier->execute();
+		$demandePanier->closeCursor();
+		return Connexion::instance()->basededonnees->lastInsertId();
+	}
+
+	public static function editerPanier($panier) {
+		$demandePanier = Connexion::instance()->basededonnees->prepare(PanierSQL::SQL_EDITER_PANIER);
+		$demandePanier->bindParam(':id', $panier->id, \PDO::PARAM_INT);
+		$demandePanier->bindParam(':nom', $panier->nom, \PDO::PARAM_STR);
+		$demandePanier->execute();
+		$demandePanier->closeCursor();
+	}
+
 	public static function listerPaniers()
 	{
 		$demandePaniers = Connexion::instance()->basededonnees->prepare(PanierSQL::SQL_LISTE_PANIERS);

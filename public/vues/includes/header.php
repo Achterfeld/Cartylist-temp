@@ -15,10 +15,10 @@
 <body>
 	<nav class="nav-principale">
 		<ul class="menu-principal">
-			<li class="actif"><a href="<?= _PUBLIC ?>/vues/index.php">Accueil</a></li>
-			<li><a href="<?= _PUBLIC ?>/vues/liste_panier.php">Liste paniers</a></li>
+			<li class="<?php if (Utilitaires\Page::$titre === 'accueil') echo 'actif' ?>"><a href="<?= _PUBLIC ?>/vues/index.php">Accueil</a></li>
+			<li class="<?php if (Utilitaires\Page::$titre === 'liste-paniers') echo 'actif' ?>"><a href="<?= _PUBLIC ?>/vues/liste_panier.php">Liste paniers</a></li>
 			<li class="marque"><a href="">Cartylist</a></li>
-			<li><a href="#">Connexion</a></li>
-			<li class="special"><a href="#">Inscription</a></li>
+			<li class="<?php if (Utilitaires\Page::$titre === 'connexion') echo 'actif' ?>"><a href="#">Connexion</a></li>
+			<li class="<?php if (Utilitaires\Page::$titre === 'inscription') echo 'actif' ?> special"><a href="#">Inscription</a></li>
 		</ul>
 	</nav>
