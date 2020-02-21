@@ -1,5 +1,12 @@
 <?php
 
+require_once './lib/stripe-php-7.24.0/init.php';
+
+//Insérer les clefs de stripe ici
+
+\Stripe\Stripe::setApiKey($stripe['secret_key']);
+
+
 // Application :
 const _RACINE = "../..";
 const _PUBLIC = "/public";
@@ -14,3 +21,4 @@ const _BDD_DSN = 'mysql:dbname=' . _BDD_BASE . ';host=' . _BDD_HOTE;
 if (file_exists(_RACINE . "/scripts/autoload.php")) {
 	require_once _RACINE . "/scripts/autoload.php";
 }
+
