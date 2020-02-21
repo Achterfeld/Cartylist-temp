@@ -2,29 +2,30 @@
 
 use Controleurs\PanierControleur;
 
-// Controleurs:
-$panierControleur = new PanierControleur();
-
-// Routes GET:
-switch ($_GET["route"]) {
-	default:
-		break;
+if (isset($_GET["action"])) {
+	// Routes GET:
+	switch ($_GET["action"]) {
+		default:
+			break;
+	}
 }
 
-// Routes POST:
-switch ($_POST["route"]) {
-	case 'panier-ajouter':
-		$panierControleur->stocker();
-		break;
-	
-	case 'panier-editer':
-		$panierControleur->mettreAJour();
-		break;
+if (isset($_POST["action"])) {
+	// Routes POST:
+	switch ($_POST["action"]) {
+		case 'panier-ajouter':
+			PanierControleur::stocker();
+			break;
+		
+		case 'panier-editer':
+			PanierControleur::mettreAJour();
+			break;
 
-	case 'panier-effacer':
-		$panierControleur->effacer();
-		break;
+		case 'panier-effacer':
+			PanierControleur::effacer();
+			break;
 
-	default:
-		break;
+		default:
+			break;
+	}
 }
