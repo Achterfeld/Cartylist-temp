@@ -2,7 +2,10 @@
 
 namespace Accesseurs;
 
-class ArticleDAO {
+use Modeles\Utilisateur;
+use Accesseurs\Requetes\UtilisateurSQL;
+
+class UtilisateurDAO {
 
     public static function sauver($utilisateur) {
         try {
@@ -39,7 +42,7 @@ class ArticleDAO {
     public static function obtenirUtilisateur($mail) {
         try {
             $demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_SELECT_UTILISATEUR);
-            $demandeUtilisateur->bindParam(':mail', $utilisateur->mail);
+            $demandeUtilisateur->bindParam(':mail', $mail);
             $demandeUtilisateur->execute();
             $resultat = $demandeUtilisateur->fetchAll();
 

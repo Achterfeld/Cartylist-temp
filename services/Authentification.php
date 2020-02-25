@@ -2,6 +2,8 @@
 
 namespace Services;
 
+use Accesseurs\UtilisateurDAO;
+
 class Authentification
 {
 
@@ -71,7 +73,7 @@ class Authentification
 			$_SESSION['utilisateur']['id'] = $utilisateur->id;
 		}
 
-		setcookie("mail", $resultat[0]['mail'], time() + 60 * 60 * 24 * 2, "/");
+		//setcookie("mail", $resultat[0]['mail'], time() + 60 * 60 * 24 * 2, "/");
 	}
 
 	/**
@@ -88,8 +90,7 @@ class Authentification
 			$password = filter_var($password, FILTER_SANITIZE_SPECIAL_CHARS);
 
 			$utilisateur = UtilisateurDAO::obtenirUtilisateur($mail);
-
-			if(password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]) == $utilisateur->hash) {
+			if( password_verify ($password ,  $utilisateur->hash )) {
 				return true;
 			} else {
 				return false;

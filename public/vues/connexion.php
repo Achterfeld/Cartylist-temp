@@ -1,28 +1,10 @@
-<!doctype html>
-<html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Connexion</title>
-	<link rel="stylesheet" href="./css/style.css">
-	<link rel='stylesheet' href='./css/connexion.css'>
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/ColinEspinas/lilcss/css/grid.min.css'>
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/ColinEspinas/lilcss/css/utility.min.css'>
-</head>
+<?php require_once './../../config.php' ?>
+
+<?php include "./includes/header.php" ?>
 <body>
-	<nav class="nav-principale">
-		<ul class="menu-principal">
-			<li><a href="#">Accueil</a></li>
-			<li><a href="#">Contact</a></li>
-			<li class="marque"><a href="">Cartylist</a></li>
-			<li><a href="#">Connexion</a></li>
-			<li class="special"><a href="#">Inscription</a></li>
-		</ul>
-	</nav>
 	<main>
 		<div class="conteneur">
-			<form action="">
+			<form action="liste_panier_privee.php" method="post">
 				<div class="lil-row">
 					<label for="identifiant">Identifiant</label>
 				</div>
@@ -41,9 +23,8 @@
 				<div class="lil-row">
 					<a href="#">Mot de passe oublié ?</a>
 				</div><br /><br />
-				<center>
-					<button class="bouton width-33">Suivant</button>
-				</center>
+				<input type="hidden" id="action" name="action" value="se-connecter">
+					<button type="submit" class="bouton width-33">Se connecter</button>
 			</form><br /><br />
 			<div class="lil-row center">
 				<center>
