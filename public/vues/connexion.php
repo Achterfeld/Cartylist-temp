@@ -1,6 +1,7 @@
 <?php require_once './../../config.php' ?>
 
 <?php include "./includes/header.php" ?>
+<link rel='stylesheet' href='./../css/connexion.css'>
 <body>
 	<main>
 		<div class="conteneur">
