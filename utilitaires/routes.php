@@ -29,7 +29,6 @@ if (isset($_POST["action"])) {
 			break;
 
 		case 'se-connecter':
-
 			if(Authentification::authentifier($_POST['identifiant'], $_POST['mot-de-passe'])) {
 				Authentification::chargerProfile($_POST['identifiant']);
 			}

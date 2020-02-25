@@ -1,11 +1,11 @@
 <?php require_once './../../config.php' ?>
 
+<?php include_once _RACINE . "/utilitaires/routes.php" ?>
+
 <?php
 	Utilitaires\Page::titre("liste-paniers");
 	$paniers = Controleurs\PanierControleur::lister();
 ?>
-
-<?php include_once _RACINE . "/utilitaires/routes.php" ?>
 
 <?php include "./includes/header.php" ?>
 	<main>

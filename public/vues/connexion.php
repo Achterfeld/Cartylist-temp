@@ -4,7 +4,7 @@
 <body>
 	<main>
 		<div class="conteneur">
-			<form action="liste_panier_privee.php" method="post">
+			<form action="profil_utilisateur.php" method="post">
 				<div class="lil-row">
 					<label for="identifiant">Identifiant</label>
 				</div>
