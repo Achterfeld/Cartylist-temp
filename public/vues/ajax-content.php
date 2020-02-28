@@ -6,10 +6,13 @@
 
 <?php include_once _RACINE . "/utilitaires/routes.php" ?>
 <?php
-// FETCH CONTENTS
+
+// Nombre de panniers par page
+$nb_panniers = 3;
+
 $page = is_numeric($_POST['page']) ? $_POST['page'] : 1 ;
-$start = ($page-1) * PER_PAGE;
-$end = $start + PER_PAGE;
+$debut = ($page-1) * $nb_panniers;
+$fin = $debut + $nb_panniers;
 
 $paniers = Controleurs\PanierControleur::listerLimite($start, $end);
 ?>

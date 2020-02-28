@@ -84,7 +84,7 @@ class PanierControleur implements ControleurCRUD
 
 	}
 
-	public static function listerLimite($start=0, $end=2) {
-		return PanierDAO::listerPanniersLimite($start, $end);
+	public static function listerLimite($debut=0, $fin=2) {
+		return PanierDAO::listerPanniersLimite($debut, $fin);
 	}
 }
