@@ -14,7 +14,7 @@ $page = is_numeric($_POST['page']) ? $_POST['page'] : 1 ;
 $debut = ($page-1) * $nb_panniers;
 $fin = $debut + $nb_panniers;
 
-$paniers = Controleurs\PanierControleur::listerLimite($start, $end);
+$paniers = Controleurs\PanierControleur::listerLimite($debut, $fin);
 ?>
 <?php if (is_array($paniers)) {foreach ($paniers as $panier) { ?>
     <div class="conteneur panier">

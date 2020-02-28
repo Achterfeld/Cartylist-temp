@@ -47,10 +47,10 @@ class PanierDAO
 		return new Panier($panier);
 	}
 
-	public static function listerPanniersLimite($start=0, $end=2) {
+	public static function listerPanniersLimite($debut=0, $fin=2) {
 		$demandePaniers = Connexion::instance()->basededonnees->prepare(PanierSQL::SQL_LISTE_PANIERS_LIMITE);
-		$demandePaniers->bindParam(':start', $start, \PDO::PARAM_INT);
-		$demandePaniers->bindParam(':end', $end, \PDO::PARAM_INT);
+		$demandePaniers->bindParam(':debut', $debut, \PDO::PARAM_INT);
+		$demandePaniers->bindParam(':fin', $fin, \PDO::PARAM_INT);
 		$demandePaniers->execute();
 		$paniersTableau = $demandePaniers->fetchAll(\PDO::FETCH_ASSOC);
 		foreach($paniersTableau as $panierTableau) {
