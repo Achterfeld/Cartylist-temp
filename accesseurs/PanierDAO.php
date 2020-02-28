@@ -46,4 +46,17 @@ class PanierDAO
 		$panier['articles'] = ArticleDAO::listerArticlesPanier($id);
 		return new Panier($panier);
 	}
+
+	public static function listerPanniersLimite($start=0, $end=2) {
+		$demandePaniers = Connexion::instance()->basededonnees->prepare(PanierSQL::SQL_LISTE_PANIERS_LIMITE);
+		$demandePaniers->bindParam(':start', $start, \PDO::PARAM_INT);
+		$demandePaniers->bindParam(':end', $end, \PDO::PARAM_INT);
+		$demandePaniers->execute();
+		$paniersTableau = $demandePaniers->fetchAll(\PDO::FETCH_ASSOC);
+		foreach($paniersTableau as $panierTableau) {
+			$panierTableau['articles'] = ArticleDAO::listerArticlesPanier($panierTableau["id"]);
+			$paniers[] = new Panier($panierTableau);
+		}
+		return isset($paniers)==0 ? false : $paniers;	
+	  }
 }
