@@ -17,7 +17,7 @@
 		<ul class="menu-principal">
 			<li class="<?php if (Utilitaires\Page::$titre === 'accueil') echo 'actif' ?>"><a href="<?= _PUBLIC ?>/vues/index.php">Accueil</a></li>
 			<li class="<?php if (Utilitaires\Page::$titre === 'liste-paniers') echo 'actif' ?>"><a href="<?= _PUBLIC ?>/vues/liste_panier.php">Liste paniers</a></li>
-			<li class="marque"><a href="">Cartylist</a></li>
+			<li class="marque"><a href="<?= _PUBLIC ?>/vues/index.php">Cartylist</a></li>
 			<li class="<?php if (Utilitaires\Page::$titre === 'connexion') echo 'actif' ?>"><a href="<?= _PUBLIC ?>/vues/connexion.php">Connexion</a></li>
 			<li class="<?php if (Utilitaires\Page::$titre === 'inscription') echo 'actif' ?> special"><a href="#">Inscription</a></li>
 		</ul>

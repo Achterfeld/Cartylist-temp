@@ -112,6 +112,24 @@ body {
 	outline: none;
 }
 
+/* Bouton supprimer */
+.bouton-supprimer {
+	display: inline-block;
+	border: 1px solid black;
+	text-decoration: none;
+	background-color: red;
+	color: var(--primaire-claire);
+	padding: 15px;
+	text-align: center;
+	font-size: 1em;
+	font-family: var(--police-regu);
+	border-radius: 5px;
+	box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	transition: background-color 200ms ease, transform 200ms ease, border 200ms ease;
+	outline: none;
+}
+
 .bouton:hover {
 	transform: scale(1.1);
 }

@@ -21,6 +21,7 @@ $paniers = Controleurs\PanierControleur::listerLimite($debut, $fin);
         <h3><?= $panier->__get("nom") ?></h3>
         <div class="actions">
             <a class="bouton" href="./details_panier.php?id=<?= $panier->__get("id") ?>">Voir</a>
+            <a class="bouton-supprimer">Supprimer</a>
         </div>
     </div>
 <?php }}?>
