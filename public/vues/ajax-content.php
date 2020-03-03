@@ -17,11 +17,11 @@ $fin = $debut + $nb_panniers;
 $paniers = Controleurs\PanierControleur::listerLimite($debut, $fin);
 ?>
 <?php if (is_array($paniers)) {foreach ($paniers as $panier) { ?>
-    <div class="conteneur panier">
+    <div class="conteneur panier" id="<?= $panier->__get("id") ?>">
         <h3><?= $panier->__get("nom") ?></h3>
         <div class="actions">
             <a class="bouton" href="./details_panier.php?id=<?= $panier->__get("id") ?>">Voir</a>
-            <a class="bouton-supprimer">Supprimer</a>
+            <button class="bouton-supprimer" onclick="supprimer(<?= $panier->__get("id") ?>)">Supprimer</button>
         </div>
     </div>
 <?php }}?>

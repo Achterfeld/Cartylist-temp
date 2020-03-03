@@ -59,4 +59,10 @@ class PanierDAO
 		}
 		return isset($paniers)==0 ? false : $paniers;	
 	  }
+
+	public static function efacerPanier($id) {
+		$demandePaniers = Connexion::instance()->basededonnees->prepare(PanierSQL::SQL_DELETE_PANIER);
+		$demandePaniers->bindParam(':id', $id, \PDO::PARAM_INT);
+		$demandePaniers->execute();
+	}
 }

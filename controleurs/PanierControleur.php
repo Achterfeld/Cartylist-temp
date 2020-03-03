@@ -81,7 +81,7 @@ class PanierControleur implements ControleurCRUD
 	}
 
 	public static function effacer() {
-
+		PanierDAO::efacerPanier($_GET["id"]);
 	}
 
 	public static function listerLimite($debut=0, $fin=2) {

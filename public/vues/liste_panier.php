@@ -20,3 +20,5 @@
 
 <?php include "./includes/footer.php" ?>
 <!-- intersection observer -->
+<script src="./../js/supprimer.js"></script>
+

@@ -13,12 +13,12 @@
 			<div id="panier-conteneur">
 				<h2 class="titre-section">Paniers:</h2>
 				<?php foreach ($paniers as $panier) { ?>
-					<div class="conteneur panier">
+					<div class="conteneur panier" id="<?=$panier->id ?>">
 						<h3><?= $panier->nom ?></h3>
 						<div class="actions">
 							<a class="bouton" href="./details_panier.php?id=<?= $panier->id ?>">Voir</a>
 							<a class="bouton" href="./modifier_panier.php?id=<?= $panier->id ?>">Modifier</a>
-							<a class="bouton-supprimer">Supprimer</a>
+							<button class="bouton-supprimer" onclick="supprimer(<?= $panier->__get("id") ?>)">Supprimer</button>
 						</div>
 					</div>
 				<?php } ?>
@@ -26,3 +26,4 @@
 		</div>
 	</main>
 <?php include "./includes/footer.php" ?>
+<script src="./../js/supprimer.js"></script>
