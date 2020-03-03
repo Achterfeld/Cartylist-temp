@@ -19,7 +19,7 @@ var chargementDynamique = {
 
       // Requete AJAX 
       var ajax = new XMLHttpRequest();
-      ajax.open('POST', "ajax-content.php", true);
+      ajax.open('POST', "ajax-contenu.php", true);
       ajax.onload = function () {
 
         // Si Aucun panniers sont a charger
