@@ -111,4 +111,10 @@ class Authentification
 			unset($_SESSION['utilisateur']);
 		}
 	}
+
+	public static function estInscrit($utilisateur) {
+
+		$utilisateur = UtilisateurDAO::obtenirUtilisateur($mail);
+		return !is_null($utilisateur);
+	}
 }
