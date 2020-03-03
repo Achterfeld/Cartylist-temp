@@ -8,6 +8,7 @@ class Panier
 		array(
 			'id' => FILTER_VALIDATE_INT,
 			'nom' => FILTER_SANITIZE_STRING,
+			'proprietaire' => FILTER_VALIDATE_INT
 		);
 
 	protected $id;
@@ -23,6 +24,7 @@ class Panier
 
 		$this->id = $tableau['id'];
 		$this->nom = $tableau['nom'];
+		$this->proprietaire = $tableau['proprietaire'];
 	}
 	
 	public function __set($propriete, $valeur)
@@ -35,7 +37,7 @@ class Panier
 		}
 	}
 
-	public function &__get($propriete)
+	public function __get($propriete)
 	{
 		$self = get_object_vars($this); // externaliser pour optimiser
 		return $self[$propriete];

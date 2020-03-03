@@ -6,14 +6,15 @@ DROP TABLE IF EXISTS `panier`;
 CREATE TABLE `panier` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` text NOT NULL,
+  `proprietaire` int(11) NOT NULL,
 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `panier` ( `id`, `nom`) VALUES
-(	1,	'Panier de course'),
-(	2,	'Panier pour ordinateur'),
-(	3,	'Panier de vétement');
+INSERT INTO `panier` ( `id`, `nom`, `proprietaire`) VALUES
+(	1,	'Panier de course', 1),
+(	2,	'Panier pour ordinateur', 1),
+(	3,	'Panier de vétement', 1);
 
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
