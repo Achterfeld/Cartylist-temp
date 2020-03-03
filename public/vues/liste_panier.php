@@ -7,7 +7,7 @@
 <?php include_once _RACINE . "/utilitaires/routes.php" ?>
 
 <?php include "./includes/header.php" ?>
-<script src="./../js/scroll.js"></script>
+
 	<main>
 		<div id="panier-liste" class="conteneur-centre-page panier-liste">
 			<div id="panier-conteneur">
@@ -17,8 +17,9 @@
     	<div id="page-loading">Now loading...</div>
 	</main>
 
-
 <?php include "./includes/footer.php" ?>
 <!-- intersection observer -->
 <script src="./../js/supprimer.js"></script>
+
+<script src="./../js/defilement.js"></script>
 
