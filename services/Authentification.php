@@ -3,6 +3,7 @@
 namespace Services;
 
 use Accesseurs\UtilisateurDAO;
+use Modeles\Utilisateur;
 
 class Authentification
 {
@@ -34,7 +35,7 @@ class Authentification
 
 		$utilisateur = new Utilisateur([$prenom, $mail]);
 
-		if (!estInscrit($utilisateur)) {
+		if (!self::estInscrit($utilisateur)) {
 
 			$hash1 = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
 
@@ -114,7 +115,7 @@ class Authentification
 
 	public static function estInscrit($utilisateur) {
 
-		$utilisateur = UtilisateurDAO::obtenirUtilisateur($mail);
+		$utilisateur = UtilisateurDAO::obtenirUtilisateur($utilisateur->mail);
 		return !is_null($utilisateur);
 	}
 }

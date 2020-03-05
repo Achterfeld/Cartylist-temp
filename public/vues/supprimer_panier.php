@@ -2,5 +2,11 @@
 
 <?php
 use Controleurs\PanierControleur;
+use Accesseurs\PanierDAO;
 
-PanierControleur::effacer();
+echo var_dump($_SESSION);
+
+if($_SESSION['utilisateur']['id'] == PanierDAO::detaillerPanier(_GET['id'])) {
+
+    PanierControleur::effacer();
+}

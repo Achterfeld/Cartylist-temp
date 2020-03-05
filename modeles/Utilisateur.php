@@ -21,13 +21,22 @@ class Utilisateur
 	
 	public function __construct($tableau)
 	{
-		$tableau = filter_var_array($tableau, Utilisateur::$filtres);
-
-        $this->prenom = $tableau['prenom'];
-        $this->mail = $tableau['mail'];
-        $this->hash = $tableau['hash'];
-        $this->img = $tableau['img'];
-        
+		if(isset($tableau['prenom'])) {
+			$tableau['prenom'] = filter_var($tableau['prenom'], $filtres['prenom']);
+			$this->prenom = $tableau['prenom'];
+		}
+		if(isset($tableau['mail'])) {
+			$tableau['mail'] = filter_var($tableau['mail'], $filtres['mail']);
+			$this->mail = $tableau['mail'];
+		}
+		if(isset($tableau['hash'])) {
+			$tableau['hash'] = filter_var($tableau['hash'], $filtres['hash']);
+			$this->hash = $tableau['hash'];
+		}
+		if(isset($tableau['img'])) {
+			$tableau['img'] = filter_var($tableau['img'], $filtres['img']);
+			$this->img = $tableau['img'];
+		}
 	}
 	
 	public function __set($propriete, $valeur)

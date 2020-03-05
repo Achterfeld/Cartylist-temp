@@ -45,8 +45,10 @@ class UtilisateurDAO {
             $demandeUtilisateur->bindParam(':mail', $mail);
             $demandeUtilisateur->execute();
             $resultat = $demandeUtilisateur->fetchAll();
-
-            return new Utilisateur($resultat[0]);
+            if(isset($resultat[0]))
+                return new Utilisateur($resultat[0]);
+            else
+                return null;
 
         } catch(PDOException $e) {
             $e->getMessage();
