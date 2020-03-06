@@ -4,7 +4,7 @@ namespace Modeles;
 
 class Utilisateur
 {
-	public static $filtres = 
+	protected $filtres = 
 		array(
             'prenom' => FILTER_SANITIZE_STRING,
             'mail' => FILTER_SANITIZE_STRING,
@@ -22,19 +22,19 @@ class Utilisateur
 	public function __construct($tableau)
 	{
 		if(isset($tableau['prenom'])) {
-			$tableau['prenom'] = filter_var($tableau['prenom'], $filtres['prenom']);
+			$tableau['prenom'] = filter_var($tableau['prenom'], $this->filtres['prenom']);
 			$this->prenom = $tableau['prenom'];
 		}
 		if(isset($tableau['mail'])) {
-			$tableau['mail'] = filter_var($tableau['mail'], $filtres['mail']);
+			$tableau['mail'] = filter_var($tableau['mail'], $this->filtres['mail']);
 			$this->mail = $tableau['mail'];
 		}
 		if(isset($tableau['hash'])) {
-			$tableau['hash'] = filter_var($tableau['hash'], $filtres['hash']);
+			$tableau['hash'] = filter_var($tableau['hash'], $this->filtres['hash']);
 			$this->hash = $tableau['hash'];
 		}
 		if(isset($tableau['img'])) {
-			$tableau['img'] = filter_var($tableau['img'], $filtres['img']);
+			$tableau['img'] = filter_var($tableau['img'], $this->filtres['img']);
 			$this->img = $tableau['img'];
 		}
 	}
@@ -44,24 +44,24 @@ class Utilisateur
 		switch($propriete)
 		{
 			case 'prenom':
-				$this->titre = $valeur;
+				$this->$propriete = $valeur;
 			break;
 		
 			case 'mail':
-				$this->titre = $valeur;
+				$this->$propriete = $valeur;
 			break;
 
 			case 'hash':
-				$this->titre = $valeur;
+				$this->$propriete = $valeur;
 			break;
 
 			case 'img':
-				$this->titre = $valeur;
+				$this->$propriete = $valeur;
 			break;
 		}
 	}
 
-	public function __get($propriete)
+	public function &__get($propriete)
 	{
 		$self = get_object_vars($this); // externaliser pour optimiser
 		return $self[$propriete];

@@ -33,8 +33,8 @@ class Authentification
 		$password2 = filter_var($password2, FILTER_SANITIZE_SPECIAL_CHARS);
 		$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
 
-		$utilisateur = new Utilisateur([$prenom, $mail]);
-
+		$utilisateur = new Utilisateur(['prenom' => $prenom, 'mail'=> $mail]);
+		
 		if (!self::estInscrit($utilisateur)) {
 
 			$hash1 = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
@@ -42,6 +42,8 @@ class Authentification
 			if (password_verify($password2, $hash1)) {
 
 				$utilisateur->__set('hash', $hash1);
+
+				UtilisateurDAO::ajouterUtilisateur($utilisateur);
 				return self::Insertion_OK;
 			} else {
 				return self::Pb_MDP;
@@ -66,9 +68,8 @@ class Authentification
 		if (isset($_SESSION['utilisateur'])) {
 			unset($_SESSION['utilisateur']);
 		}
-
+	
 		if (!is_null($utilisateur)) {
-
 			$_SESSION['utilisateur']['mail'] = $utilisateur->mail;
 			$_SESSION['utilisateur']['prenom'] = $utilisateur->prenom;
 			$_SESSION['utilisateur']['id'] = $utilisateur->id;
@@ -91,10 +92,13 @@ class Authentification
 			$password = filter_var($password, FILTER_SANITIZE_SPECIAL_CHARS);
 
 			$utilisateur = UtilisateurDAO::obtenirUtilisateur($mail);
-			if( password_verify ($password ,  $utilisateur->hash )) {
-				return true;
-			} else {
-				return false;
+			
+			if(!\is_null($utilisateur)) {
+				if( password_verify ($password ,  $utilisateur->hash )) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		} catch(PDOException $e) {
 			return false;

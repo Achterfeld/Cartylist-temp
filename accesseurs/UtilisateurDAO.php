@@ -7,12 +7,24 @@ use Accesseurs\Requetes\UtilisateurSQL;
 
 class UtilisateurDAO {
 
+
+    public static function ajouterUtilisateur($utilisateur) {
+		$demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_INSERT_UTILISATEUR);
+        $demandeUtilisateur->bindParam(':prenom', $utilisateur->prenom, \PDO::PARAM_STR);
+        $demandeUtilisateur->bindParam(':hash', $utilisateur->hash, \PDO::PARAM_STR);
+		$demandeUtilisateur->bindParam(':mail', $utilisateur->mail, \PDO::PARAM_STR);
+		$demandeUtilisateur->execute();
+		$demandeUtilisateur->closeCursor();
+		return Connexion::instance()->basededonnees->lastInsertId();
+	}
+
     public static function sauver($utilisateur) {
         try {
             $demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_SAUVER_UTILISATEUR);
             $demandeUtilisateur->bindParam(':prenom', $utilisateur->prenom);
 			$demandeUtilisateur->bindParam(':mail', $utilisateur->mail);
-			$demandeUtilisateur->bindParam(':hash', $utilisateur->hash);
+            $demandeUtilisateur->bindParam(':hash', $utilisateur->hash);
+            $demandeUtilisateur->bindParam(':img', $utilisateur->img);
 			$demandeUtilisateur->bindParam(':id', $utilisateur->id);
             $demandeUtilisateur->execute();
             return true;
@@ -44,12 +56,11 @@ class UtilisateurDAO {
             $demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_SELECT_UTILISATEUR);
             $demandeUtilisateur->bindParam(':mail', $mail);
             $demandeUtilisateur->execute();
-            $resultat = $demandeUtilisateur->fetchAll();
-            if(isset($resultat[0]))
-                return new Utilisateur($resultat[0]);
-            else
-                return null;
-
+            $resultat = $demandeUtilisateur->fetch(\PDO::FETCH_ASSOC);
+            if($resultat) {
+                return new Utilisateur($resultat);
+            }
+            
         } catch(PDOException $e) {
             $e->getMessage();
         }

@@ -16,7 +16,7 @@
 					<label for="mot-de-passe">Mot de passe</label>
 				</div>
 				<div class="lil-row">
-					<input class="champ-texte width-100" type="text" name="mot-de-passe" id="mot-de-passe" placeholder="Votre mot de passe...">
+					<input class="champ-texte width-100" type="password" name="mot-de-passe" id="mot-de-passe" placeholder="Votre mot de passe...">
 				</div><br />
 				<div class="lil-row">
 					<input type="checkbox" name="se-souvenir-de-moi" id="se-souvenir-de-moi">&nbsp;<labelf for="se-souvenir-de-moi">Se souvenir de moi</label>
