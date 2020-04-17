@@ -1,4 +1,4 @@
-<?php require_once './../../config.php' ?>
+<?php require_once './../../../config.php' ?>
 <?php session_start() ?>
 
 <?php include_once _RACINE . "/utilitaires/routes.php" ?>
