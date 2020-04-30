@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="<?= _PUBLIC ?>/css/style.css">
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/ColinEspinas/lilcss/css/grid.min.css'>
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/ColinEspinas/lilcss/css/utility.min.css'>
+	<script src="https://kit.fontawesome.com/6c5ab1f8a0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

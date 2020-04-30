@@ -17,11 +17,11 @@ $paniers = Controleurs\PanierControleur::listerLimite($debut, $fin);
     <div class="panier" id="<?= $panier->__get("id") ?>">
 		<header>
 			<h3 class="titre" title="Mon panier"><?= $panier->__get("nom") ?></h3>
+			<a class="modifier" href="./modifier_panier.php?id=<?= $panier->id ?>"><i class="fas fa-edit"></i></a>
 		</header>
 		<footer>
 			<span class="nb-produit"><?= count($panier->articles) ?> produit(s)</span>
-			<a href="./details_panier.php?id=<?= $panier->__get("id") ?>" class="voir"><i class="fas fa-eye"></i><span>Voir</span></a>
+			<a href="../membre/details_panier.php?id=<?= $panier->__get("id") ?>" class="voir"><i class="fas fa-eye"></i><span>Voir</span></a>
 		</footer>
 	</div>
 <?php }}?>
-

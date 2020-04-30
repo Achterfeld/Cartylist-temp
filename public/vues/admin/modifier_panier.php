@@ -5,7 +5,7 @@
     $panier = Controleurs\PanierControleur::editer();
 ?>
 
-<?php include "./includes/header.php" ?>
+<?php include "../includes/header.php" ?>
     <main>
         <div class="conteneur-centre-page">
             <div class="conteneur panier-editer">
@@ -48,5 +48,5 @@
         </div>
 
     </main>
-    <script src="../js/panier.js"></script>
-<?php include "./includes/footer.php" ?>
+    <script src="../../js/panier.js"></script>
+<?php include "../includes/footer.php" ?>
