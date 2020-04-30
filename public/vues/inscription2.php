@@ -15,10 +15,10 @@
 						<h1>Choisissez un mot de passe</h1>
 					</center>
 					<div class="lil-row">
-						<input class="champ-texte width-100" type="hidden" name="nom" id="nom" value="<?= $_POST['nom']?>">
+						<input class="champ-texte width-100" type="hidden" name="nom" id="nom" value="<?= $_POST['nom']?>" required>
 					</div><br />
 					<div class="lil-row">
-						<input class="champ-texte width-100" type="hidden" name="identifiant" id="identifiant" value="<?= $_POST['identifiant']?>">
+						<input class="champ-texte width-100" type="hidden" name="identifiant" id="identifiant" value="<?= $_POST['identifiant']?>" required>
 					</div><br />
 					<div class="lil-row between">
 						<div class="lil-col 6-12">
@@ -26,7 +26,7 @@
 								<label for="mot-de-passe">Mot de passe</label>
 							</div>
 							<div class="lil-row">
-								<input class="champ-texte width-100" type="text" name="mot-de-passe" id="mot-de-passe" placeholder="Choisissez votre mot de passe...">
+								<input class="champ-texte width-100" type="password" name="mot-de-passe" id="mot-de-passe" placeholder="Choisissez votre mot de passe..." required>
 							</div>
 						</div>
 						<div class="lil-col 6-12">
@@ -34,7 +34,7 @@
 								<label for="confirm-mot-de-passe">Confirmation du mot de passe</label>
 							</div>
 							<div class="lil-row">
-								<input class="champ-texte width-100" type="text" name="confirm-mot-de-passe" id="confirm-mot-de-passe" placeholder="Confirmation votre mot de passe...">
+								<input class="champ-texte width-100" type="password" name="confirm-mot-de-passe" id="confirm-mot-de-passe" placeholder="Confirmation votre mot de passe..." required>
 							</div>
 						</div>
 					</div><br /><br />

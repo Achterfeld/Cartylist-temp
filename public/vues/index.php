@@ -9,12 +9,11 @@
 	<header class="page-header">
 		<div class="lil-row between middle">
 			<div class="lil-col sm-12-12 md-6-12">
-				<h1>Lorem ipsum dolor</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur tempora, corporis possimus
-					aliquid illo officia illum provident fugit voluptates.</p>
+				<h1>Listes de course communautaire</h1>
+				<p>Avec Cartylist, de nouvelle liste de courses vous sont proposés chaque jour, pour tout les profils, pour tout les gouts</p>
 				<div id="boutons-entete">
-					<a class="bouton-secondaire" href="#">Connexion</a>
-					<a class="bouton" href="#">Inscription</a>
+					<a class="bouton-secondaire" href="<?= _PUBLIC ?>/vues/connexion.php">Connexion</a>
+					<a class="bouton" href="<?= _PUBLIC ?>/vues/inscription1.php">Inscription</a>
 				</div>
 			</div>
 			<div class="lil-col sm-12-12 md-6-12">

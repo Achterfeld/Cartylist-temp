@@ -6,7 +6,8 @@
     display: inline-block;
     height: 250px;
     width: 250px;
-    background-image: url('./../images/profile.svg');
+    object-fit: cover;
+	border-radius: 50%;
 }
 
 .profil-infos {

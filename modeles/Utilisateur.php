@@ -6,21 +6,27 @@ class Utilisateur
 {
 	protected $filtres = 
 		array(
+			'id' => FILTER_VALIDATE_INT,
             'prenom' => FILTER_SANITIZE_STRING,
             'mail' => FILTER_SANITIZE_STRING,
             'hash' => FILTER_SANITIZE_STRING,
-            'img' => FILTER_SANITIZE_STRING,
+            'avatar' => FILTER_SANITIZE_STRING,
 		);
 		
     protected $id;
     protected $prenom;
     protected $mail;
     protected $hash;
-    protected $img;
+    protected $avatar;
 
 	
 	public function __construct($tableau)
 	{
+		if(isset($tableau['utilisateur_id'])) {
+			$tableau['utilisateur_id'] = filter_var($tableau['utilisateur_id'], $this->filtres['id']);
+			$this->id = $tableau['utilisateur_id'];
+		}
+
 		if(isset($tableau['prenom'])) {
 			$tableau['prenom'] = filter_var($tableau['prenom'], $this->filtres['prenom']);
 			$this->prenom = $tableau['prenom'];
@@ -33,9 +39,9 @@ class Utilisateur
 			$tableau['hash'] = filter_var($tableau['hash'], $this->filtres['hash']);
 			$this->hash = $tableau['hash'];
 		}
-		if(isset($tableau['img'])) {
-			$tableau['img'] = filter_var($tableau['img'], $this->filtres['img']);
-			$this->img = $tableau['img'];
+		if(isset($tableau['avatar'])) {
+			$tableau['avatar'] = filter_var($tableau['avatar'], $this->filtres['avatar']);
+			$this->avatar = $tableau['avatar'];
 		}
 	}
 	
@@ -55,7 +61,7 @@ class Utilisateur
 				$this->$propriete = $valeur;
 			break;
 
-			case 'img':
+			case 'avatar':
 				$this->$propriete = $valeur;
 			break;
 		}

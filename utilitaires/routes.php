@@ -33,7 +33,13 @@ if (isset($_POST["action"])) {
 		break;
 
 		case 'inscription':
-			Authentification::nouveauUtilisateur($_POST['nom'], $_POST['mot-de-passe'], $_POST["confirm-mot-de-passe"], $_POST["identifiant"]);
+			Authentification::nouveauUtilisateur(
+				$_POST['nom'], 
+				$_POST['mot-de-passe'], 
+				$_POST["confirm-mot-de-passe"], 
+				$_POST["identifiant"],
+				$_POST["avatar-dernier"]
+			);
 			if(Authentification::authentifier($_POST['identifiant'], $_POST['mot-de-passe'])) {
 				Authentification::chargerProfile($_POST['identifiant']);
 			}

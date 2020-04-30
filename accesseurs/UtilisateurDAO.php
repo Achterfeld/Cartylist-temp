@@ -12,7 +12,8 @@ class UtilisateurDAO {
 		$demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_INSERT_UTILISATEUR);
         $demandeUtilisateur->bindParam(':prenom', $utilisateur->prenom, \PDO::PARAM_STR);
         $demandeUtilisateur->bindParam(':hash', $utilisateur->hash, \PDO::PARAM_STR);
-		$demandeUtilisateur->bindParam(':mail', $utilisateur->mail, \PDO::PARAM_STR);
+        $demandeUtilisateur->bindParam(':mail', $utilisateur->mail, \PDO::PARAM_STR);
+        $demandeUtilisateur->bindParam(':avatar', $utilisateur->avatar, \PDO::PARAM_STR);
 		$demandeUtilisateur->execute();
 		$demandeUtilisateur->closeCursor();
 		return Connexion::instance()->basededonnees->lastInsertId();
@@ -24,7 +25,7 @@ class UtilisateurDAO {
             $demandeUtilisateur->bindParam(':prenom', $utilisateur->prenom);
 			$demandeUtilisateur->bindParam(':mail', $utilisateur->mail);
             $demandeUtilisateur->bindParam(':hash', $utilisateur->hash);
-            $demandeUtilisateur->bindParam(':img', $utilisateur->img);
+            $demandeUtilisateur->bindParam(':avatar', $utilisateur->avatar);
 			$demandeUtilisateur->bindParam(':id', $utilisateur->id);
             $demandeUtilisateur->execute();
             return true;

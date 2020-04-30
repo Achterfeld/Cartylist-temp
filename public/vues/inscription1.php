@@ -18,13 +18,13 @@
 						<label for="nom">Identifiant</label>
 					</div>
 					<div class="lil-row">
-						<input class="champ-texte width-100" type="text" name="nom" id="nom" placeholder="Choisissez votre identifiant...">
+						<input class="champ-texte width-100" type="text" name="nom" id="nom" placeholder="Choisissez votre identifiant..." required>
 					</div><br />
 					<div class="lil-row">
 						<label for="identifiant">Email</label>
 					</div>
 					<div class="lil-row">
-						<input class="champ-texte width-100" type="text" name="identifiant" id="identifiant" placeholder="Entrez votre adresse mail...">
+						<input class="champ-texte width-100" type="text" name="identifiant" id="identifiant" placeholder="Entrez votre adresse mail..." required>
 					</div><br />
 					
 					<div class="lil-row">

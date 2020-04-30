@@ -26,12 +26,13 @@ class Authentification
 	 * @return int Retourne un code permettant d'identifier si il y a un problème ou non.
 	 */
 
-	public static function nouveauUtilisateur($prenom, $password, $password2, $mail)
+	public static function nouveauUtilisateur($prenom, $password, $password2, $mail, $avatar)
 	{
 		$prenom = filter_var($prenom, FILTER_SANITIZE_SPECIAL_CHARS);
 		$password = filter_var($password, FILTER_SANITIZE_SPECIAL_CHARS);
 		$password2 = filter_var($password2, FILTER_SANITIZE_SPECIAL_CHARS);
 		$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
+		$avatar = filter_var($avatar, FILTER_SANITIZE_SPECIAL_CHARS);
 
 		$utilisateur = new Utilisateur(['prenom' => $prenom, 'mail'=> $mail]);
 		
@@ -42,6 +43,7 @@ class Authentification
 			if (password_verify($password2, $hash1)) {
 
 				$utilisateur->__set('hash', $hash1);
+				$utilisateur->__set('avatar', $avatar);
 
 				UtilisateurDAO::ajouterUtilisateur($utilisateur);
 				return self::Insertion_OK;
@@ -62,7 +64,6 @@ class Authentification
 	 */
 	public static function chargerProfile($mail)
 	{
-
 		$utilisateur = UtilisateurDAO::obtenirUtilisateur($mail);
 
 		if (isset($_SESSION['utilisateur'])) {
@@ -73,6 +74,7 @@ class Authentification
 			$_SESSION['utilisateur']['mail'] = $utilisateur->mail;
 			$_SESSION['utilisateur']['prenom'] = $utilisateur->prenom;
 			$_SESSION['utilisateur']['id'] = $utilisateur->id;
+			$_SESSION['utilisateur']['avatar'] = $utilisateur->avatar;
 		}
 
 		//setcookie("mail", $resultat[0]['mail'], time() + 60 * 60 * 24 * 2, "/");

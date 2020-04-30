@@ -4,14 +4,14 @@
 <?php include_once _RACINE . "/utilitaires/routes.php" ?>
 
 <?php include "../includes/header.php" ?>
-<link rel='stylesheet' href='./../css/profil_utilisateur.css'>
+<link rel='stylesheet' href='../../css/profil_utilisateur.css'>
     <main>
 		<div class="conteneur-centre-page">
+            <?php if(isset($_SESSION['utilisateur'])) {?>
             <div class="profil">
 				<h1>Mon profil</h1>
-                <div class="profil-image"></div>
+                <img class="profil-image" src="<?= $_SESSION['utilisateur']['avatar'] ?>" alt="avatar-utilisateur">
                 <div class="profil-infos">
-                    <?php if(isset($_SESSION['utilisateur'])) {?>
                         <h3>Nom d'utilisateur</h3>
                         <p><?= $_SESSION['utilisateur']['prenom'] ?></p>
                         <h3>Email</h3>
@@ -25,12 +25,11 @@
                             <input type="hidden" name="action" value="se-deconnecter">
                             <button type="submit" class="bouton-secondaire">Se déconnecter</button>
                         </form>
-                    <?php } else { ?>
-                        <p>Vous devez être connecté pour avoir accès à votre profil, cliquez <a href="<?= _PUBLIC ?>/vues/connexion.php">ici</a> pour vous connecter.</p>
-                    <?php } ?>
                 </div>
             </div>
+            <?php } else { ?>
+                <p>Vous devez être connecté pour avoir accès à votre profil, cliquez <a href="<?= _PUBLIC ?>/vues/connexion.php">ici</a> pour vous connecter.</p>
+            <?php } ?>
         </div>
     </main>
-</body>
-</html>
+<?php include "../includes/footer.php" ?>
