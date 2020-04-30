@@ -1,11 +1,11 @@
 <?php const _VUES = "../"; ?>
 <?php require_once './../../../config.php' ?>
 
-<?php include "./includes/header.php" ?>
+<?php include "../includes/header.php" ?>
     <main>
         <div class="conteneur-centre-page">
             <div class="conteneur panier-editer">
-                <form method="POST" action="<?= _PUBLIC ?>/vues/liste_panier.php">
+                <form method="POST" action="<?= _PUBLIC ?>/vues/admin/liste_panier.php">
                     <div class="lil-row ">
                         <h1>Ajouter un panier:</h1>
                         <div class="lil-col 12-12">
@@ -39,5 +39,5 @@
         </div>
 
     </main>
-    <script src="../js/panier.js"></script>
-<?php include "./includes/footer.php" ?>
+    <script src="../../js/panier.js"></script>
+<?php include "../includes/footer.php" ?>

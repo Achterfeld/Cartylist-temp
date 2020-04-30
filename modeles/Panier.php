@@ -14,6 +14,7 @@ class Panier
 	protected $id;
 	protected $nom;
 	protected $articles;
+	protected $proprietaire;
 
 	public function __construct($tableau)
 	{
