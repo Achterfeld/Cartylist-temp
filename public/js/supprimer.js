@@ -7,13 +7,8 @@ function supprimer(id) {
     requete.onload = () => {
 
         if(requete.status >= 200 && requete.status < 400) {
-            conteneurPanier.parentNode.removeChild(conteneurPanier);
-            console.log(requete.response);
-            console.log('pas error');
-            } else {
-            console.log('error');
-            }
+            console.log('ok');
         }
-
+    }
     requete.send();
 }

@@ -23,7 +23,11 @@
 					<hr>
 				<?php } ?>
 				</div>
+				<button href="panier-supprimer.php" class="bouton-supprimer" onclick="supprimer(<?= $panier->__get("id") ?>)">Supprimer</button>
 			</div>
 		</div>
 	</main>
 <?php include "../includes/footer.php" ?>
+
+<script src="../../js/defilement.js"></script>
+<script src="../../js/supprimer.js"></script>
