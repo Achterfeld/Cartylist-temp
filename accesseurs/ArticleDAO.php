@@ -59,4 +59,12 @@ class ArticleDAO
 		foreach ($articles as $article) $articlesObjs[] = new Article($article);
 		return $articlesObjs;
 	}
+
+	public static function nombreArticlesPanier($idPanier) {
+		$demandeArticle = Connexion::instance()->basededonnees->prepare(ArticleSQL::SQL_NOMBRE_ARTICLES_PANIER);
+		$demandeArticle->bindParam(':id', $idPanier, \PDO::PARAM_INT);
+		$demandeArticle->execute();
+		$nombreArticle = $demandeArticle->fetch();
+		return $nombreArticle;
+	}
 }

@@ -1,3 +1,4 @@
+<?php const _VUES = "../"; ?>
 <?php require_once './../../../config.php' ?>
 
 <?php include_once _RACINE . "/utilitaires/routes.php" ?>
@@ -7,7 +8,7 @@
 	$paniers = Controleurs\PanierControleur::lister();
 ?>
 
-<?php include "./includes/header.php" ?>
+<?php include "../includes/header.php" ?>
 	<main>
 		<div class="conteneur-centre-page panier-liste">
 			<div id="panier-conteneur">
@@ -25,5 +26,5 @@
 			</div>
 		</div>
 	</main>
-<?php include "./includes/footer.php" ?>
-<script src="./../js/supprimer.js"></script>
+<?php include "../includes/footer.php" ?>
+<script src="./../../js/supprimer.js"></script>

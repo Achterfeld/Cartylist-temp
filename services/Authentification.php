@@ -100,7 +100,7 @@ class Authentification
 					return false;
 				}
 			}
-		} catch(PDOException $e) {
+		} catch(\PDOException $e) {
 			return false;
 		}
 	}
@@ -110,7 +110,7 @@ class Authentification
 	 * 
 	 * La fonction est en static car elle est utlisié dans plusieurs classes. 
 	 */
-	public static function disconnect()
+	public static function deconnexion()
 	{
 		if (isset($_SESSION['utilisateur'])) {
 			unset($_SESSION['utilisateur']);

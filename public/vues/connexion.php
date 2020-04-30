@@ -1,3 +1,4 @@
+<?php const _VUES = "./"; ?>
 <?php require_once './../../config.php' ?>
 
 <?php include "./includes/header.php" ?>
@@ -5,7 +6,7 @@
 <body>
 	<main>
 		<div class="conteneur">
-			<form action="profil_utilisateur.php" method="post">
+			<form action="<?= _PUBLIC ?>/vues/membre/profil_utilisateur.php" method="post">
 				<div class="lil-row">
 					<label for="identifiant">Identifiant</label>
 				</div>

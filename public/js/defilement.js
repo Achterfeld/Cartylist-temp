@@ -32,9 +32,9 @@ var chargementDynamique = {
         // Si du contenu est a charger
         else {
           // Ajout dans le conteneur + cache le message de chargement
-          var el = document.createElement('div');
-          el.innerHTML = this.response;
-          document.getElementById("panier-liste").appendChild(el);
+          // var el = document.createElement('div');
+          // el.innerHTML =;
+          document.getElementById("panier-conteneur").innerHTML += (this.response);
           chargement.style.display = "none";
           // Definie la page en cours, débloquer le chargement pour un prochain ajout
           chargementDynamique.page = pgSuiv;
@@ -52,8 +52,6 @@ var chargementDynamique = {
     position = Math.round(document.documentElement.scrollTop + window.innerHeight);
 
     // Vérifie si l'utilisateur est arrivé en bas de la page
-    console.log('Hauteur: ' + hauteur);
-    console.log('Position: ' + position);
     if (position === hauteur) { 
       chargementDynamique.AjouterPannier();
     }

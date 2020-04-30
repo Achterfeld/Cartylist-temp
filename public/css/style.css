@@ -187,7 +187,7 @@ body {
 	border-radius: 5px;
 }
 
-header {
+.page-header {
 	max-width: 1200px;
 	margin: 200px auto;
 	padding: 0 25px;
@@ -212,6 +212,10 @@ header {
 	margin: 0 auto;
 	padding: 0 25px;
 } */
+
+main {
+	min-height: 800px;
+}
 
 .conteneur-centre-page {
 	max-width: 1200px;
@@ -271,27 +275,90 @@ header {
 	margin: 15px 0 25px 0;
 }
 
-.panier-liste {
-	padding: 200px 0;
+.liste-panier {
+	margin: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+	justify-content: center;
 }
 
 .panier {
+/* 	width: 300px; */
+	border: 1px solid #eee;
+	border-radius: 5px;
+/* 	box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.2); */
+	overflow: hidden;
+}
+
+.panier>header {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	align-items: center;
-	margin: 15px 0;
+	padding: 15px;
+	box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
 }
 
-.panier>.actions {
-	margin-left: auto;
-	display: flex;
-}
-
-.panier>.actions>a {
-	margin: 0 5px;
-}
-
-.panier>h3 {
+.panier>header>.titre {
 	margin: 0;
+	font-size: 1.1em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.panier>header>.modifier {
+	margin-left: 10px;
+	color: var(--secondaire-sombre);
+	transition: color 200ms ease;
+}
+
+.panier>header>.modifier:hover {
+	color: var(--secondaire-claire);
+}
+
+.panier>footer {
+	position: relative;
+	z-index: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px;
+	background: #eee;
+	border-radius: 0 0 5px 5px;
+}
+
+.panier>footer>.nb-produit {
+	font-size: 0.9em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #333;
+}
+
+.panier>footer>.voir {
+	display: flex;
+	text-decoration: none;
+	align-items: center;
+	padding: 5px 8px;
+	background-color: var(--secondaire-sombre);
+	color: var(--primaire-claire);
+	border-radius: 5px;
+	margin: -5px -8px;
+	transition: 
+		background-color 200ms ease, 
+		color 200ms ease;
+}
+
+.panier>footer>.voir:hover {
+	background-color: var(--secondaire-claire);
+}
+
+.panier>footer>.voir>span {
+	margin-left: 5px;
 }
 
 .panier-affichage {

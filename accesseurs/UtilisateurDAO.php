@@ -28,28 +28,28 @@ class UtilisateurDAO {
 			$demandeUtilisateur->bindParam(':id', $utilisateur->id);
             $demandeUtilisateur->execute();
             return true;
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
             return false;
         }
     }
 
-    public static function estInscrit($utilisateur) {
-        try {
+    // public static function estInscrit($utilisateur) {
+    //     try {
 
-            $demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_EXISTE_UTILISATEUR);
-            $demandeUtilisateur->bindParam(':id', $utilisateur->id);
-            $demandeUtilisateur->execute();
-            $resultat = $demandeUtilisateur->fetchAll();
+    //         $demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_EXISTE_UTILISATEUR);
+    //         $demandeUtilisateur->bindParam(':id', $utilisateur->id);
+    //         $demandeUtilisateur->execute();
+    //         $resultat = $demandeUtilisateur->fetchAll();
 
-    		if ($resultat[0][0] == 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch(PDOException $e) {
-            return false;
-        }
-    }
+    // 		if ($resultat[0][0] == 0) {
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
+    //     } catch(\PDOException $e) {
+    //         return false;
+    //     }
+    // }
 
     public static function obtenirUtilisateur($mail) {
         try {
@@ -61,7 +61,7 @@ class UtilisateurDAO {
                 return new Utilisateur($resultat);
             }
             
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
             $e->getMessage();
         }
     }

@@ -1,9 +1,7 @@
 <?php
 
 use Services\Authentification;
-
-
-
+use Controleurs\PanierControleur;
 
 if (isset($_GET["action"])) {
 	// Routes GET:
@@ -32,6 +30,17 @@ if (isset($_POST["action"])) {
 			if(Authentification::authentifier($_POST['identifiant'], $_POST['mot-de-passe'])) {
 				Authentification::chargerProfile($_POST['identifiant']);
 			}
+		break;
+
+		case 'inscription':
+			Authentification::nouveauUtilisateur($_POST['nom'], $_POST['mot-de-passe'], $_POST["confirm-mot-de-passe"], $_POST["identifiant"]);
+			if(Authentification::authentifier($_POST['identifiant'], $_POST['mot-de-passe'])) {
+				Authentification::chargerProfile($_POST['identifiant']);
+			}
+		break;
+
+		case 'se-deconnecter':
+			Authentification::deconnexion();
 		break;
 
 		default:

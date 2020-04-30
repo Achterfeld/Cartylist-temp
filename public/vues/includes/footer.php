@@ -1,10 +1,7 @@
 <footer>
 		<div class="conteneur-pleine-page">
 			<div class="conteneur-centre-page">
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam fugit possimus quos nemo
-					dignissimos
-					distinctio aspernatur, temporibus voluptatibus minus sunt error qui ipsam rem voluptatem quo ratione
-					veritatis porro quae?</p>
+				<p style="text-align: center">Cartylist est un projet étudiant, plus d'information sur la page <a href="https://github.com/cegepmatane/cartylist">github</a> du projet.</p>
 			</div>
 		</div>
 	</footer>

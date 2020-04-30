@@ -1,3 +1,4 @@
+<?php const _VUES = "./"; ?>
 <?php require_once './../../config.php' ?>
 
 <?php include "./includes/header.php" ?>

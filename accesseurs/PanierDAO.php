@@ -66,4 +66,8 @@ class PanierDAO
 		$demandePaniers->bindParam(':id', $id, \PDO::PARAM_INT);
 		$demandePaniers->execute();
 	}
+
+	public static function nombreArticlesPanier($id) {
+		return ArticleDAO::nombreArticlesPanier($id);
+	}
 }

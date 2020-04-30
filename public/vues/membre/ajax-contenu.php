@@ -1,10 +1,7 @@
+<?php const _VUES = "../"; ?>
+
 <?php require_once './../../../config.php' ?>
 
-<?php
-	Utilitaires\Page::titre("liste-paniers");
-?>
-
-<?php include_once _RACINE . "/utilitaires/routes.php" ?>
 <?php
 
 // Nombre de panniers par page
@@ -17,12 +14,15 @@ $fin = $debut + $nb_panniers;
 $paniers = Controleurs\PanierControleur::listerLimite($debut, $fin);
 ?>
 <?php if (is_array($paniers)) {foreach ($paniers as $panier) { ?>
-    <div class="conteneur panier" id="<?= $panier->__get("id") ?>">
-        <h3><?= $panier->__get("nom") ?></h3>
-        <div class="actions">
-            <a class="bouton" href="./details_panier.php?id=<?= $panier->__get("id") ?>">Voir</a>
-            <button class="bouton-supprimer" onclick="supprimer(<?= $panier->__get("id") ?>)">Supprimer</button>
-        </div>
-    </div>
+    <div class="panier" id="<?= $panier->__get("id") ?>">
+		<header>
+			<h3 class="titre" title="Mon panier"><?= $panier->__get("nom") ?></h3>
+			<a class="modifier" href=""><i class="fas fa-edit"></i></a>
+		</header>
+		<footer>
+			<span class="nb-produit"><?= count($panier->articles) ?> produit(s)</span>
+			<a href="./details_panier.php?id=<?= $panier->__get("id") ?>" class="voir"><i class="fas fa-eye"></i><span>Voir</span></a>
+		</footer>
+	</div>
 <?php }}?>
 

@@ -1,3 +1,4 @@
+<?php const _VUES = "./"; ?>
 <?php require_once './../../config.php' ?>
 
 <?php 
@@ -5,7 +6,7 @@
 ?>
 
 <?php include "./includes/header.php" ?>
-	<header>
+	<header class="page-header">
 		<div class="lil-row between middle">
 			<div class="lil-col sm-12-12 md-6-12">
 				<h1>Lorem ipsum dolor</h1>
