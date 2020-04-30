@@ -42,7 +42,7 @@ CREATE TABLE `utilisateur` (
   `prenom` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `mail` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `hash` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `img` text,
+  `avatar` text DEFAULT "https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png",
 
   PRIMARY KEY (`utilisateur_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
