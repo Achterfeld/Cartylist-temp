@@ -114,6 +114,8 @@ body {
 
 /* Bouton supprimer */
 .bouton-supprimer {
+	position: relative;
+	left: 89.5%;
 	display: inline-block;
 	border: 1px solid black;
 	text-decoration: none;
