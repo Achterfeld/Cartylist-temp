@@ -1,7 +1,7 @@
 <?php
 
 // Application :
-const _RACINE = "../..";
+const _RACINE = "../../" . _VUES;
 const _PUBLIC = "/public";
 
 // Base de données :
@@ -25,3 +25,5 @@ if (file_exists(_RACINE . "/utilitaires/autoload.php")) {
 // Initialisation stripe :
 require_once _RACINE . '/lib/stripe-php-7.24.0/init.php';
 \Stripe\Stripe::setApiKey($stripe['secret_key']);
+
+session_start();
