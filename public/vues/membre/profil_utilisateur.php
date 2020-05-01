@@ -24,6 +24,13 @@
                             <button class="bouton">Modifier les informations</button>
                         </form>
                         <br>
+                        <br>
+                        <a href="liste_transaction.php"><button class="bouton">Voir mes transactions</button></a>
+                        <br><br>
+                        <a href="../admin/ajouter_panier.php"><button class="bouton">Créer un panier</button></a>
+                        <br><br>
+                        <button class="bouton" id="checkout-button">Faire un don</button>
+                        <br><br>
                         <form action="<?= _PUBLIC ?>/vues/membre/profil_utilisateur.php" method="POST">
                             <input type="hidden" name="action" value="se-deconnecter">
                             <button type="submit" class="bouton-secondaire">Se déconnecter</button>
@@ -35,6 +42,7 @@
             <?php } ?>
         </div>
     </main>
+
     <script src="https://js.stripe.com/v3"></script>
 
 <script>
@@ -58,5 +66,6 @@ checkoutButton.addEventListener('click', function () {
 });
 });
 </script>
+
 
 <?php include "../includes/footer.php" ?>
