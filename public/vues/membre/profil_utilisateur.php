@@ -18,10 +18,14 @@
                         <p><?= $_SESSION['utilisateur']['mail']?></p>
                         <!-- <h3>Liste des paniers publiques:</h3>
                     <p><a href="<?= _PUBLIC ?>/vues/membre/liste_panier.php">Liste ici</a></p> -->
-                        
-                        <button class="bouton">Modifier les informations</button>
-                        <br><br>
-                        <form action="<?= _PUBLIC ?>/vues/membre/profil_utilisateur.php" method="POST">
+                        <form action="<?= _PUBLIC ?>/vues/membre/profil_modifier.php" method="POST">
+                            <input type="hidden" name="nom" id="nom" value="<?= $_SESSION['utilisateur']['prenom'] ?>">
+                            <input type="hidden" name="identifiant" id="identifiant" value="<?= $_SESSION['utilisateur']['mail']?>">
+                            <br>
+                            <button class="bouton">Modifier les informations</button>
+                        </form>
+                        <br>
+                        <form id ="form-modification" action="<?= _PUBLIC ?>/vues/membre/profil_utilisateur.php" method="POST">
                             <input type="hidden" name="action" value="se-deconnecter">
                             <button type="submit" class="bouton-secondaire">Se déconnecter</button>
                         </form>
