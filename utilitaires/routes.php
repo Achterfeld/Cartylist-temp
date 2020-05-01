@@ -45,6 +45,15 @@ if (isset($_POST["action"])) {
 			}
 		break;
 
+		case 'modification':
+			Authentification::modifierProfil(
+				$_POST['nom'],
+				$_POST["identifiant"],
+				$_POST["avatar-dernier"],
+				$_POST['id']
+			);
+		break;
+
 		case 'se-deconnecter':
 			Authentification::deconnexion();
 		break;

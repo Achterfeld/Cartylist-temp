@@ -34,6 +34,20 @@ class UtilisateurDAO {
         }
     }
 
+    public static function modifierUtilisateur($utilisateur) {
+        try {
+            $demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_MODIFIER_UTILISATEUR);
+            $demandeUtilisateur->bindParam(':prenom', $utilisateur->prenom);
+			$demandeUtilisateur->bindParam(':mail', $utilisateur->mail);
+            $demandeUtilisateur->bindParam(':avatar', $utilisateur->avatar);
+			$demandeUtilisateur->bindParam(':id', $utilisateur->id);
+            $demandeUtilisateur->execute();
+            return true;
+        } catch(\PDOException $e) {
+            return false;
+        }
+    }
+
     // public static function estInscrit($utilisateur) {
     //     try {
 
@@ -56,6 +70,21 @@ class UtilisateurDAO {
         try {
             $demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_SELECT_UTILISATEUR);
             $demandeUtilisateur->bindParam(':mail', $mail);
+            $demandeUtilisateur->execute();
+            $resultat = $demandeUtilisateur->fetch(\PDO::FETCH_ASSOC);
+            if($resultat) {
+                return new Utilisateur($resultat);
+            }
+            
+        } catch(\PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
+    public static function obtenirUtilisateurId($id) {
+        try {
+            $demandeUtilisateur = Connexion::instance()->basededonnees->prepare(UtilisateurSQL::SQL_SELECT_UTILISATEUR_ID);
+            $demandeUtilisateur->bindParam(':id', $id);
             $demandeUtilisateur->execute();
             $resultat = $demandeUtilisateur->fetch(\PDO::FETCH_ASSOC);
             if($resultat) {

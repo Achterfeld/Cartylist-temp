@@ -23,6 +23,7 @@ class Authentification
 	 * @param string $password Le password de l'utilisateur.
 	 * @param string $password2 Une nouvelle fois le password de l'utilisateur pour pouvoir vérifier qu'il n'y a pas d'erreur. 
 	 * @param string $mail L'email de l'utilisateur.
+	 * @param string $avatar L'url de l'avatar de l'utilisateur.
 	 * @return int Retourne un code permettant d'identifier si il y a un problème ou non.
 	 */
 
@@ -55,7 +56,6 @@ class Authentification
 		}
 	}
 
-
 	/**
 	 * La fonction permet de charger un profil.
 	 *
@@ -78,6 +78,21 @@ class Authentification
 		}
 
 		//setcookie("mail", $resultat[0]['mail'], time() + 60 * 60 * 24 * 2, "/");
+	}
+
+	public static function modifierProfil($prenom, $mail, $avatar, $id)
+	{
+		$utilisateur = UtilisateurDAO::obtenirUtilisateurId($id);
+
+		$prenom = filter_var($prenom, FILTER_SANITIZE_SPECIAL_CHARS);
+		$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
+		$avatar = filter_var($avatar, FILTER_SANITIZE_SPECIAL_CHARS);
+
+		$utilisateur->__set('prenom', $prenom);
+		$utilisateur->__set('mail', $mail);
+		$utilisateur->__set('avatar', $avatar);
+
+		UtilisateurDAO::modifierUtilisateur($utilisateur);
 	}
 
 	/**
