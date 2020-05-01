@@ -20,6 +20,10 @@
                     <p><a href="<?= _PUBLIC ?>/vues/membre/liste_panier.php">Liste ici</a></p> -->
                         
                         <button class="bouton">Modifier les informations</button>
+                        <br>
+                        <br>
+                        <a href="liste_transaction.php"><button class="bouton">Voir mes transactions</button></a>
+
                         <br><br>
                         <form action="<?= _PUBLIC ?>/vues/membre/profil_utilisateur.php" method="POST">
                             <input type="hidden" name="action" value="se-deconnecter">
