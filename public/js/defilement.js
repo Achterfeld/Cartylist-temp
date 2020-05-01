@@ -1,5 +1,5 @@
 var chargementDynamique = {
-    page: 0, // "page actuelle",
+    page: 2, // "page actuelle",
     hasMore: true, // Afin de savoir si des panniers reste a charger
     charge: true, // Afin de sacoir si le chargement de nouveau pannier est possible
 

@@ -8,8 +8,14 @@
 $nb_panniers = 3;
 
 $page = is_numeric($_POST['page']) ? $_POST['page'] : 1 ;
-$debut = ($page-1) * $nb_panniers;
-//$fin = $debut + $nb_panniers;
+if((int)$page==3){
+	$nb_panniers = 12;
+	$debut=0;
+}else{
+	$nb_panniers = 3;
+	$debut = ($page) * $nb_panniers;
+}
+
 
 $paniers = Controleurs\PanierControleur::listerLimite($debut, $nb_panniers);
 ?>
