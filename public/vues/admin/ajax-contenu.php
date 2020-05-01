@@ -5,20 +5,14 @@
 <?php
 
 // Nombre de panniers par page
-$nb_panniers = 3;
+$nb_panniers = 12;
 
 $page = is_numeric($_POST['page']) ? $_POST['page'] : 1 ;
-if((int)$page==3){
-	$nb_panniers = 12;
-	$debut=0;
-}else{
-	$nb_panniers = 3;
-	$debut = ($page) * $nb_panniers;
-}
 
+$debut = ($page-1) * $nb_panniers;
+//$fin = $debut + $nb_panniers;
 
 $paniers = Controleurs\PanierControleur::listerLimite($debut, $nb_panniers);
-
 ?>
 <?php if (is_array($paniers)) {foreach ($paniers as $panier) { ?>
     <div class="panier" id="<?= $panier->__get("id") ?>">
