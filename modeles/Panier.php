@@ -33,15 +33,17 @@ class Panier
 		switch($propriete)
 		{
 			case 'nom':
-				$this->titre = $valeur;
+				$this->nom = $valeur;
+			case 'proprietaire':
+				$this->proprietaire = $valeur;
 			break;
 		}
 	}
 
-	public function __get($propriete)
+	public function &__get($propriete)
 	{
 		$self = get_object_vars($this); // externaliser pour optimiser
 		return $self[$propriete];
-	}	
+	}
 }
 ?>
