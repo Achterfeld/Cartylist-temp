@@ -18,14 +18,13 @@
                         <p><?= $_SESSION['utilisateur']['mail']?></p>
                         <!-- <h3>Liste des paniers publiques:</h3>
                     <p><a href="<?= _PUBLIC ?>/vues/membre/liste_panier.php">Liste ici</a></p> -->
-                        <form action="<?= _PUBLIC ?>/vues/membre/profil_modifier.php" method="POST">
+                        <form id ="form-modification" action="<?= _PUBLIC ?>/vues/membre/profil_modifier.php" method="POST">
                             <input type="hidden" name="nom" id="nom" value="<?= $_SESSION['utilisateur']['prenom'] ?>">
                             <input type="hidden" name="identifiant" id="identifiant" value="<?= $_SESSION['utilisateur']['mail']?>">
-                            <br>
                             <button class="bouton">Modifier les informations</button>
                         </form>
                         <br>
-                        <form id ="form-modification" action="<?= _PUBLIC ?>/vues/membre/profil_utilisateur.php" method="POST">
+                        <form action="<?= _PUBLIC ?>/vues/membre/profil_utilisateur.php" method="POST">
                             <input type="hidden" name="action" value="se-deconnecter">
                             <button type="submit" class="bouton-secondaire">Se déconnecter</button>
                         </form>
@@ -36,4 +35,28 @@
             <?php } ?>
         </div>
     </main>
+    <script src="https://js.stripe.com/v3"></script>
+
+<script>
+var stripe = Stripe('<?php echo $stripe['publishable_key']; ?>');
+
+var checkoutButton = document.querySelector('#checkout-button');
+checkoutButton.addEventListener('click', function () {
+  stripe.redirectToCheckout({
+    items: [{
+      // Define the product and SKU in the Dashboard first, and use the SKU
+      // ID in your client-side code.
+      sku: 'sku_Gltrh8elnSx1XP',
+      quantity: 1
+    }],
+    successUrl: 'http://cartylist.com/public/vues/payement/succes.php',
+    cancelUrl: 'http://cartylist.com/public/vues/payement/annulation.php'
+  }).then(function (result) {
+  // If `redirectToCheckout` fails due to a browser or network
+  // error, display the localized error message to your customer
+  console.log(result.error.message);
+});
+});
+</script>
+
 <?php include "../includes/footer.php" ?>

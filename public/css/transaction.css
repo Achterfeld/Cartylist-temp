@@ -1,0 +1,10 @@
+.conteneur-transaction {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 8%;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+}

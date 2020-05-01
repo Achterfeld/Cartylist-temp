@@ -9,9 +9,9 @@ $nb_panniers = 3;
 
 $page = is_numeric($_POST['page']) ? $_POST['page'] : 1 ;
 $debut = ($page-1) * $nb_panniers;
-$fin = $debut + $nb_panniers;
+//$fin = $debut + $nb_panniers;
 
-$paniers = Controleurs\PanierControleur::listerLimite($debut, $fin);
+$paniers = Controleurs\PanierControleur::listerLimite($debut, $nb_panniers);
 ?>
 <?php if (is_array($paniers)) {foreach ($paniers as $panier) { ?>
     <div class="panier" id="<?= $panier->__get("id") ?>">
