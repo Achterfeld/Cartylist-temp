@@ -6,6 +6,7 @@
 <button id="checkout-button">Pay</button>
 
 <script src="https://js.stripe.com/v3"></script>
+
 <script>
 var stripe = Stripe('<?php echo $stripe['publishable_key']; ?>');
 
