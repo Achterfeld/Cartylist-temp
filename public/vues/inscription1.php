@@ -24,14 +24,15 @@
 						<label for="identifiant">Email</label>
 					</div>
 					<div class="lil-row">
-						<input class="champ-texte width-100" type="text" name="identifiant" id="identifiant" placeholder="Entrez votre adresse mail..." required>
+						<input class="champ-texte width-100" type="text" name="identifiant" id="identifiant" placeholder="Entrez votre adresse mail..." onchange="verifEmail('identifiant')" required>
+						<div id="email-valide"><!-- --></div>
 					</div><br />
 					
 					<div class="lil-row">
 						<div class="lil-col 0-12">
 						</div>
 						<div class="lil-col 12-12">
-							<button type="submit" class="bouton width-100" >Suivant</button>
+							<button type="submit" id="page-suivante" class="bouton width-100" >Suivant</button>
 						</div>
 					</div>
 				</div>
@@ -39,3 +40,5 @@
 		</div>
 	</main>
 <?php include "./includes/footer.php" ?>
+
+<script src="./../js/email.js"></script>

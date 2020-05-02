@@ -23,7 +23,9 @@
 					<hr>
 				<?php } ?>
 				</div>
-				<button href="panier-supprimer.php" class="bouton-supprimer" onclick="supprimer(<?= $panier->__get("id") ?>)">Supprimer</button>
+				<?php if($panier->proprietaire == $_SESSION['utilisateur']['id']) { ?>
+				<a href="<?= _PUBLIC ?>/vues/<?php if($_SESSION['utilisateur']['admin']){echo('admin/panier-supprimer.php');} else {echo('membre/supprimer_panier.php');} ?>" class="bouton-supprimer" onclick="supprimer(<?= $panier->__get("id") ?>)">Supprimer</a>
+				<?php }?>
 			</div>
 		</div>
 	</main>

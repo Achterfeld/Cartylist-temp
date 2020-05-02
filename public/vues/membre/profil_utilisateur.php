@@ -17,8 +17,6 @@
                         <h3>Email</h3>
                         <p><?= $_SESSION['utilisateur']['mail']?></p>
                         <p class="profil-admin"><?php if($_SESSION['utilisateur']['admin']) echo('Administrateur'); ?></p>
-                        <!-- <h3>Liste des paniers publiques:</h3>
-                    <p><a href="<?= _PUBLIC ?>/vues/membre/liste_panier.php">Liste ici</a></p> -->
                         <form id ="form-modification" action="<?= _PUBLIC ?>/vues/membre/profil_modifier.php" method="POST">
                             <input type="hidden" name="nom" id="nom" value="<?= $_SESSION['utilisateur']['prenom'] ?>">
                             <input type="hidden" name="identifiant" id="identifiant" value="<?= $_SESSION['utilisateur']['mail']?>">
@@ -26,6 +24,7 @@
                         </form>
                         <br>
                         <a href="liste_transaction.php"><button class="bouton">Voir mes transactions</button></a>
+                        <?php if($_SESSION['utilisateur']['admin']) { echo('<a href="../admin/liste_transaction.php"><button class="bouton">Voir toutes les transactions</button></a>'); } ?>
                         <br><br>
                         <a href="../admin/ajouter_panier.php"><button class="bouton">Créer un panier</button></a>
                         <br><br>

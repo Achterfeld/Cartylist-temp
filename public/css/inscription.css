@@ -24,3 +24,8 @@ a {
 	object-fit: cover;
 	border-radius: 50%;
 }
+
+#email-valide {
+	color: red;
+	padding-top: 10px;
+}
