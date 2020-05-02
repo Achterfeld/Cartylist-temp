@@ -18,7 +18,7 @@
                         </div>
                     </div>
 
-                    <!-- Ajoue d'un produit -->
+                    <!-- Ajout d'un produit -->
                     <div id="conteneur-produits">
                         <?php foreach ($panier->articles as $i => $article) { ?>
                             <div id="<?= $i ?>" class="panier-conteneur">
@@ -38,7 +38,7 @@
 
                    <input name="action" type="hidden" value="panier-editer">
 
-                    <!-- Fin de l'ajoue d'un produit -->
+                    <!-- Fin de l'ajout d'un produit -->
                     <button  type="submit" class="bouton sauvegarder-btn">Sauvegarder</button>
                 </form>
                 <div class="">

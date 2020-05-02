@@ -11,13 +11,15 @@ class Utilisateur
             'mail' => FILTER_SANITIZE_STRING,
             'hash' => FILTER_SANITIZE_STRING,
             'avatar' => FILTER_SANITIZE_STRING,
+            'admin' => FILTER_VALIDATE_BOOLEAN,
 		);
 		
     protected $id;
     protected $prenom;
     protected $mail;
     protected $hash;
-    protected $avatar;
+	protected $avatar;
+	protected $admin;
 
 	
 	public function __construct($tableau)
@@ -43,6 +45,10 @@ class Utilisateur
 			$tableau['avatar'] = filter_var($tableau['avatar'], $this->filtres['avatar']);
 			$this->avatar = $tableau['avatar'];
 		}
+		if(isset($tableau['admin'])) {
+			$tableau['admin'] = filter_var($tableau['admin'], $this->filtres['admin']);
+			$this->admin = $tableau['admin'];
+		}
 	}
 	
 	public function __set($propriete, $valeur)
@@ -62,6 +68,10 @@ class Utilisateur
 			break;
 
 			case 'avatar':
+				$this->$propriete = $valeur;
+			break;
+
+			case 'admin':
 				$this->$propriete = $valeur;
 			break;
 		}

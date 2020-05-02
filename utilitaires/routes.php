@@ -52,6 +52,7 @@ if (isset($_POST["action"])) {
 				$_POST["avatar-dernier"],
 				$_POST['id']
 			);
+			Authentification::chargerProfileId($_POST['id']);
 		break;
 
 		case 'se-deconnecter':

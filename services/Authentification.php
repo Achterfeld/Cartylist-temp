@@ -17,7 +17,7 @@ class Authentification
 	/**
 	 * Fonction permettant de créer un utilisateur.
 	 *
-	 * La fonction est en static car elle est utilisé dans plusieurs classes.
+	 * La fonction est en static car elle est utilisée dans plusieurs classes.
 	 * Cette fonction permet de créer un nouvel utilisateur. Les paramètres sont filtrer par php pour éviter tous les problèmes.
 	 * @param string $prenom Le prenom de l'utilisateur.
 	 * @param string $password Le password de l'utilisateur.
@@ -59,8 +59,8 @@ class Authentification
 	/**
 	 * La fonction permet de charger un profil.
 	 *
-	 * La fonction est en static car elle est utilisé dans plusieurs classes.
-	 * @param int $user_id L'identifiant de l'utilisateur.
+	 * La fonction est en static car elle est utilisée dans plusieurs classes.
+	 * @param string $mail L'adresse mail de l'utilisateur.
 	 */
 	public static function chargerProfile($mail)
 	{
@@ -75,11 +75,47 @@ class Authentification
 			$_SESSION['utilisateur']['prenom'] = $utilisateur->prenom;
 			$_SESSION['utilisateur']['id'] = $utilisateur->id;
 			$_SESSION['utilisateur']['avatar'] = $utilisateur->avatar;
+			$_SESSION['utilisateur']['admin'] = $utilisateur->admin;
 		}
 
 		//setcookie("mail", $resultat[0]['mail'], time() + 60 * 60 * 24 * 2, "/");
 	}
 
+	/**
+	 * La fonction permet de charger un profil à partir de l'id utilisateur.
+	 *
+	 * La fonction est en static car elle est utilisée dans plusieurs classes.
+	 * @param int $id L'identifiant de l'utilisateur.
+	 */
+	public static function chargerProfileId($id)
+	{
+		$utilisateur = UtilisateurDAO::obtenirUtilisateurId($id);
+
+		if (isset($_SESSION['utilisateur'])) {
+			unset($_SESSION['utilisateur']);
+		}
+	
+		if (!is_null($utilisateur)) {
+			$_SESSION['utilisateur']['mail'] = $utilisateur->mail;
+			$_SESSION['utilisateur']['prenom'] = $utilisateur->prenom;
+			$_SESSION['utilisateur']['id'] = $utilisateur->id;
+			$_SESSION['utilisateur']['avatar'] = $utilisateur->avatar;
+			$_SESSION['utilisateur']['admin'] = $utilisateur->admin;
+		}
+
+		//setcookie("mail", $resultat[0]['mail'], time() + 60 * 60 * 24 * 2, "/");
+	}
+
+	/**
+	 * Fonction permettant de modifier un utilisateur.
+	 *
+	 * La fonction est en static car elle est utilisée dans plusieurs classes.
+	 * Cette fonction permet de modifier les informations d'un utilisateur. Les paramètres sont filtrés par php pour éviter tous les problèmes.
+	 * @param string $prenom Le prenom de l'utilisateur.
+	 * @param string $mail L'email de l'utilisateur.
+	 * @param string $avatar L'url de l'avatar de l'utilisateur.
+	 * @param int $id Un id unique propre à l'utilisateur.
+	 */
 	public static function modifierProfil($prenom, $mail, $avatar, $id)
 	{
 		$utilisateur = UtilisateurDAO::obtenirUtilisateurId($id);
@@ -92,13 +128,17 @@ class Authentification
 		$utilisateur->__set('mail', $mail);
 		$utilisateur->__set('avatar', $avatar);
 
+		/* if (isset($_SESSION['utilisateur'])) {
+			unset($_SESSION['utilisateur']);
+		} */
+
 		UtilisateurDAO::modifierUtilisateur($utilisateur);
 	}
 
 	/**
 	 * La fonction permet de s'authentifier.
 	 * 
-	 * La fonction est en static car elle est utlisié dans plusieurs classes. 
+	 * La fonction est en static car elle est utilisée dans plusieurs classes. 
 	 * @param string $mail Email de l'utilisateur.
 	 * @param string $password Mot de passe de l'utilisateur.
 	 */
@@ -125,7 +165,7 @@ class Authentification
 	/**
 	 * La fonction permet de se déconnecter.
 	 * 
-	 * La fonction est en static car elle est utlisié dans plusieurs classes. 
+	 * La fonction est en static car elle est utilisée dans plusieurs classes. 
 	 */
 	public static function deconnexion()
 	{
