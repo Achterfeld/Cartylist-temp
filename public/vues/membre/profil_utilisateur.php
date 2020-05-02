@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php const _VUES = "../"; ?>
 <?php require_once './../../../config.php' ?>
 
@@ -42,7 +43,7 @@
         </div>
     </main>
 
-    <script src="https://js.stripe.com/v3"></script>
+ <script src="https://js.stripe.com/v3"></script>
 
 <script>
 var stripe = Stripe('<?php echo $stripe['publishable_key']; ?>');
@@ -56,8 +57,8 @@ checkoutButton.addEventListener('click', function () {
       sku: 'sku_Gltrh8elnSx1XP',
       quantity: 1
     }],
-    successUrl: 'http://cartylist.com/vues/payement/succes.php',
-    cancelUrl: 'http://cartylist.com/vues/payement/annulation.php'
+    successUrl: 'http://cartylist.com/public/vues/payement/succes.php',
+    cancelUrl: 'http://cartylist.com/public/vues/payement/annulation.php'
   }).then(function (result) {
   // If `redirectToCheckout` fails due to a browser or network
   // error, display the localized error message to your customer
