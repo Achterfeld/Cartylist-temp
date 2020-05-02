@@ -57,8 +57,8 @@ checkoutButton.addEventListener('click', function () {
       sku: 'sku_Gltrh8elnSx1XP',
       quantity: 1
     }],
-    successUrl: 'http://cartylist.com/public/vues/payement/succes.php',
-    cancelUrl: 'http://cartylist.com/public/vues/payement/annulation.php'
+    successUrl: 'http://cartylist.com/vues/payement/succes.php',
+    cancelUrl: 'http://cartylist.com/vues/payement/annulation.php'
   }).then(function (result) {
   // If `redirectToCheckout` fails due to a browser or network
   // error, display the localized error message to your customer
@@ -66,6 +66,5 @@ checkoutButton.addEventListener('click', function () {
 });
 });
 </script>
-
 
 <?php include "../includes/footer.php" ?>
